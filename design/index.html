@@ -25,7 +25,7 @@
   </head>
 
   <body>
-    <div class="container-fluid h-100">
+    <div class="container-fluid h-100" id="app">
       <div class="h-100" id="garden-bed-planner">
       <div class="row h-100">
         <div class="col-sm-8 p-0 h-100">
@@ -47,7 +47,7 @@
           <!-- <p class="column-empty-text">
             No plots added. Click "+" button to add a plot
           </p> -->
-          <div class="plot rectangular-plot">
+          <div class="plot circular-plot">
             <div class="grid plot-grid h-100 w-100">
             <div class="item tomato"></div>
           <div class="item pepper"></div>
@@ -96,27 +96,27 @@
           <div class="inventory-grid grid h-100 w-100">
           <div class="item tomato"></div>
           <div class="item pepper"></div>
-          <div class="item zucchini"></div>
+          <div class="item spinach"></div>
           <div class="item tomato"></div>
           <div class="item tomato"></div>
           <div class="item tomato"></div>
           <div class="item pepper"></div>
-          <div class="item zucchini"></div>
+          <div class="item spinach"></div>
           <div class="item tomato"></div>
           <div class="item tomato"></div>
           <div class="item tomato"></div>
           <div class="item pepper"></div>
-          <div class="item zucchini"></div>
+          <div class="item spinach"></div>
           <div class="item tomato"></div>
           <div class="item tomato"></div>
           <div class="item tomato"></div>
           <div class="item pepper"></div>
-          <div class="item zucchini"></div>
+          <div class="item spinach"></div>
           <div class="item tomato"></div>
           <div class="item tomato"></div>
           <div class="item tomato"></div>
           <div class="item pepper"></div>
-          <div class="item zucchini"></div>
+          <div class="item spinach"></div>
           <div class="item tomato"></div>
           <div class="item tomato"></div>
 
@@ -136,6 +136,7 @@
         <div class="input-group mb-3" id="search-bar-container">
           <input
             type="search"
+            v-model="search"
             class="form-control search-plants-input"
             placeholder="&#xf002; Search for plants"
             aria-label="Search plants"
@@ -144,19 +145,18 @@
           />
         </div>
         <div class="list-group">
-          <div class="list-item">
+          <div class="list-item" v-for="plant in filteredList">
           <div class="row">
             <div class="col-md-5 col-lg-3 col-xl-3">
               <img
                 class="img-fluid w-100"
-                src="https://ca-times.brightspotcdn.com/dims4/default/129d07e/2147483647/strip/true/crop/1421x1351+0+0/resize/840x799!/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Fc1%2F99%2F95996981234386c4e0a3e46464df%2Fsdut-tomato-a-20160902"
-                alt="Sample"
+                v-bind:src="plant.img" alt="{{ plant.title }}"
               />
             </div>
             <div class="col-md-7 col-lg-9 col-xl-9">
                 <div>
-                  <h2>Heirloom tomato</h2>
-                  <p><b>Space required: </b>1 square foot</p>
+                  <h2>{{ plant.title }}</h2>
+                  <p><b>Space required: </b>{{plant.space}}</p>
                 </div>
                   <div class="input-group plus-minus-input">
                     <span class="input-group-btn">
@@ -212,6 +212,7 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="scripts.js"></script>
   </body>
 </html>

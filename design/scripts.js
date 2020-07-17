@@ -1,3 +1,44 @@
+class Plant {
+  constructor(title, img, space) {
+    this.title = title;
+    this.img = img;
+    this.space = space;
+  }
+}
+
+const app = new Vue({
+  el: "#app",
+  data: {
+    search: "",
+    plantList: [
+      new Plant(
+        "Heirloom Tomato",
+        "tomato.jpeg",
+        "1 square foot"
+      ),
+      new Plant(
+        "Spinach",
+        "spinach.jpg",
+        "2 square feet"
+      ),
+      new Plant(
+        "Pepper",
+        "pepper.jpeg",
+        "1 square foot"
+      ),
+    ],
+  },
+  computed: {
+    filteredList() {
+      return this.plantList.filter((plant) => {
+        return plant.title
+          .toLowerCase()
+          .includes(this.search.toLowerCase());
+      });
+    },
+  },
+});
+
 
 var sideNavButton = document.getElementById("toggle-search-drawer-button");
 sideNavButton.addEventListener("click", toggleSidenav);

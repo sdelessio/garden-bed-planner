@@ -196,19 +196,19 @@ h6 {
 .tomato {
   grid-column: auto / span 2;
   grid-row: auto / span 2;
-  background-image: url("https://ca-times.brightspotcdn.com/dims4/default/129d07e/2147483647/strip/true/crop/1421x1351+0+0/resize/840x799!/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Fc1%2F99%2F95996981234386c4e0a3e46464df%2Fsdut-tomato-a-20160902");
+  background-image: url("tomato.jpeg");
 }
 
 .pepper {
   grid-column: auto / span 1;
   grid-row: auto / span 1;
-  background-image: url("https://dictionary.cambridge.org/images/thumb/pepper_noun_002_27126_2.jpg?version=5.0.102");
+  background-image: url("pepper.jpeg");
 }
 
-.zucchini {
+.spinach {
   grid-column: auto / span 3;
   grid-row: auto / span 3;
-  background-image: url("https://image.shutterstock.com/image-photo/fresh-green-zucchini-slice-isolated-260nw-755075830.jpg");
+  background-image: url("spinach.jpg");
 }
 
 .list-group {
@@ -221,6 +221,7 @@ h6 {
   padding: 10px;
   box-shadow: 0 1px 3px rgba(34, 13, 30, 0.12), 0 1px 2px rgba(34, 13, 30, 0.24);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  margin-bottom: 10px;
 }
 
 .list-item > .row {
