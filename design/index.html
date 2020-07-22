@@ -22,6 +22,8 @@
     />
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css?v=1.0" />
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   </head>
 
   <body>
@@ -32,7 +34,7 @@
           <div class="h-100 flexbox" id="plot-container">
           <div class="plot-container-header">
             <div class="input-group">
-  <input type="number" class="form-control" placeholder="Length" aria-label="Length" aria-describedby="length-addon">
+  <input id="input-grid" type="number" class="form-control" placeholder="Length" aria-label="Length" aria-describedby="length-addon">
   <div class="input-group-append">
     <span class="input-group-text" id="length-addon">inches</span>
   </div>
@@ -47,11 +49,8 @@
           <!-- <p class="column-empty-text">
             No plots added. Click "+" button to add a plot
           </p> -->
-          <div class="plot rectangular-plot">
-            <div class="grid plot-grid h-100 w-100">
-            <div class="item tomato"></div>
-          <div class="item pepper"></div>
-    </div>
+          <div class="plot circular-plot">
+            <div class="grid plot-grid h-100 w-100" id="plot-grid-container"></div>
           </div>
           </div>
           <div class="plot-container-footer">
@@ -93,22 +92,14 @@
           </p> -->
 
         <div class="inventory-grid-wrapper h-100 w-100">
-          <div class="inventory-grid grid h-100 w-100">
-          <div class="item tomato"></div>
-          <div class="item tomato"></div>
-          <div class="item pepper"></div>
-          <div class="item pepper"></div>
-          <div class="item pepper"></div>
-          <div class="item pepper"></div>
-          <div class="item spinach"></div>
-          <div class="item spinach"></div>
-          <div class="item tomato"></div>
-        </div>
+          <div class="inventory-grid h-100 w-100" id="inventory-grid-container">
+            <div data-value="item" class="item pepper"></div>
+            <div data-value="item" class="item tomato"></div>
       </div>
       </div>
     </div>
   </div>
-    <div class="sidenav-container">
+    <div class="sidenav-container" id="sidenav-container">
       <button type="button" class="btn" id="toggle-search-drawer-button">
         <i class="fa fa-search"></i>
       </button>
@@ -133,7 +124,7 @@
             <div class="col-md-5 col-lg-3 col-xl-3">
               <img
                 class="img-fluid w-100"
-                v-bind:src="plant.img" alt="{{ plant.title }}"
+                v-bind:src="plant.img" :alt="plant.title"
               />
             </div>
             <div class="col-md-7 col-lg-9 col-xl-9">
@@ -178,6 +169,8 @@
     </div>
     </div>
 
+    <script src="draggable.js"></script>
+  
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script
@@ -195,7 +188,7 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
     <script src="scripts.js"></script>
   </body>
 </html>

@@ -43,6 +43,7 @@ const app = new Vue({
 var sideNavButton = document.getElementById("toggle-search-drawer-button");
 sideNavButton.addEventListener("click", toggleSidenav);
 var sideNav = document.getElementById("mySidenav");
+var sideNavContainer = document.getElementById("sidenav-container");
 var closeNavButton = document.getElementById("close-nav-button");
 closeNavButton.addEventListener("click", closeSideNav);
 
@@ -54,10 +55,12 @@ function toggleSidenav() {
     sideNav.style.transform = "translate(0px)";
     sideNav.style.boxShadow = "0 19px 38px rgba(0, 0, 0, 0.3)";
     sideNavButton.style.transform = "translate(0px)";
+    sideNavContainer.style.zIndex = "4";
   } else {
     sideNav.style.transform = "translate(500px)";
     sideNav.style.boxShadow = "none";
     sideNavButton.style.transform = "translate(500px)";
+    sideNavContainer.style.zIndex = "";
   }
 }
 
@@ -66,3 +69,49 @@ function closeSideNav() {
   sideNav.style.boxShadow = "none";
   sideNavButton.style.transform = "translate(500px)";
 }
+
+// var phPool = [];
+// var phElem = document.createElement('div');
+
+  //  // Multigrid drag sorting.
+  //  var inventoryGrid = new Muuri(".inventory-grid", {
+  //   layout: {
+  //     fillGaps: true,
+  //   },
+  //   dragEnabled: true,
+  //   dragSort: getAllGrids,
+  //   dragPlaceholder: { enabled: true,
+  //     createElement(item) {
+  //       return phPool.pop() || phElem.cloneNode();
+  //     },
+  //     onCreate(item, element) {
+  //       // If you want to do something after the
+  //       // placeholder is fully created, here's
+  //       // the place to do it.
+  //     },
+  //     onRemove(item, element) {
+  //       phPool.push(element);
+  //     },
+  //    },
+  // });
+  // var plotGrid = new Muuri(".plot-grid", {
+  //   dragEnabled: true,
+  //   dragSort: getAllGrids,
+  //   dragPlaceholder: { enabled: true,
+  //     createElement(item) {
+  //       return phPool.pop() || phElem.cloneNode();
+  //     },
+  //     onCreate(item, element) {
+  //       // If you want to do something after the
+  //       // placeholder is fully created, here's
+  //       // the place to do it.
+  //     },
+  //     onRemove(item, element) {
+  //       phPool.push(element);
+  //     },
+  //    },
+  // });
+
+  // function getAllGrids(item) {
+  //   return [inventoryGrid, plotGrid];
+  // }
