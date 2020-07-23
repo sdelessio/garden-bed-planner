@@ -61,4 +61,9 @@ jq(document).ready(function () {
 
 createGrid(10);
 
+jq("#height-input-btn").click(function(){
+    var newHeight = jq("#height-input").val();
+    jq(".rectangular-plot").height(newHeight);
+});
+
 });

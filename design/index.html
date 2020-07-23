@@ -23,7 +23,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css?v=1.0" />
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   </head>
 
   <body>
@@ -34,13 +34,14 @@
           <div class="h-100 flexbox" id="plot-container">
           <div class="plot-container-header">
             <div class="input-group">
-  <input id="input-grid" type="number" class="form-control" placeholder="Length" aria-label="Length" aria-describedby="length-addon">
+  <input id="input-grid" type="number" class="form-control" id="width-input" placeholder="Length" aria-label="Length" aria-describedby="length-addon">
   <div class="input-group-append">
     <span class="input-group-text" id="length-addon">inches</span>
   </div>
 </div>
 <div class="input-group">
-<input type="number" class="form-control" placeholder="Height" aria-label="Height" aria-describedby="height-addon">
+<input type="number" class="form-control" id="height-input" placeholder="Height" aria-label="Height" aria-describedby="height-addon">
+<button id="height-input-btn">Click</button>
 <div class="input-group-append">
 <span class="input-group-text" id="height-addon">inches</span>
 </div>
@@ -49,7 +50,7 @@
           <!-- <p class="column-empty-text">
             No plots added. Click "+" button to add a plot
           </p> -->
-          <div class="plot circular-plot">
+          <div class="plot rectangular-plot">
             <div class="grid plot-grid h-100 w-100" id="plot-grid-container"></div>
           </div>
           </div>
