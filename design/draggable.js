@@ -28,7 +28,7 @@ jq(document).ready(function () {
 
   function createGrid(size) {
     var i,
-    sel = $('.plot-grid'),
+    sel = jq('.plot-grid'),
         height = sel.height(),
         width = sel.width(),
         ratioW = Math.floor(width / size),
@@ -41,7 +41,7 @@ jq(document).ready(function () {
             'width': 1,
             'height': height
       })
-        .addClass('gridlines')
+        .addClass('gridlines gridlines-vertical')
         .appendTo(sel);
     }
 
@@ -52,18 +52,33 @@ jq(document).ready(function () {
             'width': width,
             'height': 1
       })
-        .addClass('gridlines')
+        .addClass('gridlines gridlines-horizontal')
         .appendTo(sel);
     }
 
     $('.gridlines').show();
 }
 
-createGrid(10);
+createGrid(12);
 
-jq("#height-input-btn").click(function(){
-    var newHeight = jq("#height-input").val();
-    jq(".rectangular-plot").height(newHeight);
+// Change height of plot with height input
+jq("#height-input").on('input', function(){
+  var value = jq(this).val();
+  // Each inch is equal to 12 pixels
+  convertedValue = value * 12;
+  jq(".rectangular-plot").height(convertedValue);
+  jq(".gridlines").remove();
+  createGrid(12);
+});
+
+//Change width of plot with width input
+jq("#width-input").on('input', function(){
+  var value = jq(this).val();
+  // Each inch is equal to 12 pixels
+  convertedValue = value * 12;
+  jq(".rectangular-plot").width(convertedValue);
+  jq(".gridlines").remove();
+  createGrid(12);
 });
 
 });

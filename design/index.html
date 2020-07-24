@@ -34,14 +34,13 @@
           <div class="h-100 flexbox" id="plot-container">
           <div class="plot-container-header">
             <div class="input-group">
-  <input id="input-grid" type="number" class="form-control" id="width-input" placeholder="Length" aria-label="Length" aria-describedby="length-addon">
+  <input min="0" type="number" class="form-control" id="width-input" placeholder="Length" aria-label="Length" aria-describedby="length-addon">
   <div class="input-group-append">
     <span class="input-group-text" id="length-addon">inches</span>
   </div>
 </div>
 <div class="input-group">
 <input type="number" class="form-control" id="height-input" placeholder="Height" aria-label="Height" aria-describedby="height-addon">
-<button id="height-input-btn">Click</button>
 <div class="input-group-append">
 <span class="input-group-text" id="height-addon">inches</span>
 </div>
@@ -149,9 +148,8 @@
                       type="text"
                       name="quant[1]"
                       class="form-control input-number"
-                      value="1"
-                      min="1"
-                      max="10"
+                      value="0"
+                      min="0"
                     />
                     <span class="input-group-btn">
                       <button
@@ -171,7 +169,7 @@
     </div>
 
     <script src="draggable.js"></script>
-  
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script

@@ -111,8 +111,9 @@ h6 {
   /* padding: 10px; */
 }
 .rectangular-plot {
-  height: 600px;
-  width: 600px;
+  /* default 60in by 60 in */
+  height: 720px;
+  width: 720px;
 }
 
 .input-group-text {
@@ -165,15 +166,6 @@ h6 {
   position: absolute;
 } */
 
-/* .plot-grid {
-  grid-template-columns:
-    minmax(48px, max-content)
-    repeat(auto-fill, 48px);
-  grid-template-rows:
-    minmax(48px, max-content)
-    repeat(auto-fill, 48px);
-} */
-
 .grid {
   /* display: grid;
   gap: 10px 10px; */
@@ -207,28 +199,30 @@ h6 {
   background-color:rgba(244, 248, 239, .5) ;
 }
 
+/* 12 pixels is equal to one inch */
+
 .tomato {
   /* grid-column: auto / span 2;
   grid-row: auto / span 2; */
   background-image: url("tomato.jpeg");
-  width: 100px !important;
-  height: 100px !important;
+  width: 72px !important;
+  height: 72px !important;
 }
 
 .pepper {
   /* grid-column: auto / span 1;
   grid-row: auto / span 1; */
   background-image: url("pepper.jpeg");
-  width: 50px !important;
-  height: 50px !important;
+  width: 72px !important;
+  height: 72px !important;
 }
 
 .spinach {
   /* grid-column: auto / span 3;
   grid-row: auto / span 3; */
   background-image: url("spinach.jpg");
-  width: 200px !important;
-  height: 200px !important;
+  width: 72px !important;
+  height: 72px !important;
 }
 
 .list-group {
@@ -265,6 +259,8 @@ h6 {
 #plot-container {
   /* background: url("farmer.png"); */
   background-color: #acbc8a;
+  overflow: scroll;
+  padding: 50px;
 }
 
 #plot-container,
