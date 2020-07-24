@@ -1,32 +1,46 @@
 class Plant {
-  constructor(title, img, space) {
+  constructor(title, img, space, id) {
     this.title = title;
     this.img = img;
     this.space = space;
+    this.id = id;
   }
 }
 
 const app = new Vue({
   el: "#app",
   data: {
+    quantity: 0,
+    disabled: 0,
     search: "",
     plantList: [
       new Plant(
         "Heirloom Tomato",
         "tomato.jpeg",
-        "1 square foot"
+        "1 square foot",
+        "heirloom-tomato"
       ),
       new Plant(
         "Spinach",
         "spinach.jpg",
-        "2 square feet"
+        "2 square feet",
+        "spinach"
       ),
       new Plant(
         "Pepper",
         "pepper.jpeg",
-        "1 square foot"
+        "1 square foot",
+        "pepper"
       ),
     ],
+  },
+  methods: {
+    addPlant(){
+      this.quantity++;
+    },
+    subtractPlant(){
+      this.quantity--;
+    }
   },
   computed: {
     filteredList() {
@@ -35,7 +49,7 @@ const app = new Vue({
           .toLowerCase()
           .includes(this.search.toLowerCase());
       });
-    },
+    }
   },
 });
 

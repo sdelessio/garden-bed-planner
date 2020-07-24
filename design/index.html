@@ -137,7 +137,8 @@
                       <button
                         type="button"
                         class="btn btn-default btn-number minus-button"
-                        disabled="disabled"
+                        :id="plant.id + '-minus-button'"
+                        v-on:click="subtractPlant()"
                         data-type="minus"
                         data-field="quant[1]"
                       >
@@ -148,13 +149,16 @@
                       type="text"
                       name="quant[1]"
                       class="form-control input-number"
-                      value="0"
+                      :id="plant.id + '-input-number'"
+                      :value="quantity"
                       min="0"
                     />
                     <span class="input-group-btn">
                       <button
                         type="button"
                         class="btn btn-default btn-number plus-button"
+                        :id="plant.id + '-plus-button'"
+                        v-on:click="addPlant()"
                         data-type="plus"
                         data-field="quant[1]"
                       >
