@@ -39,7 +39,11 @@ const app = new Vue({
       this.quantity++;
     },
     subtractPlant(){
+      if (this.quantity === 0) {
+        alert("Negative quantity not allowed");
+      } else {
       this.quantity--;
+      }
     }
   },
   computed: {
