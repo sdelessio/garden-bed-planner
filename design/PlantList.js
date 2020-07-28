@@ -1,12 +1,7 @@
-class Plant {
-  constructor(title, img, space, id, quantity) {
-    this.title = title;
-    this.img = img;
-    this.space = space;
-    this.id = id;
-    this.quantity = quantity;
-  }
-}
+Vue.component('inventory-list-plant', {
+  template: '<div></div>',
+  props: ['id']
+})
 
 const app = new Vue({
   el: "#app",
@@ -15,32 +10,33 @@ const app = new Vue({
     disabled: 0,
     search: "",
     plantList: [
-      new Plant(
-        "Heirloom Tomato",
-        "tomato.jpeg",
-        "1 square foot",
-        "heirloom-tomato",
-        0
-      ),
-      new Plant(
-        "Spinach",
-        "spinach.jpg",
-        "2 square feet",
-        "spinach",
-        0
-      ),
-      new Plant(
-        "Pepper",
-        "pepper.jpeg",
-        "1 square foot",
-        "pepper",
-        0
-      ),
+      {
+        title: "Heirloom Tomato",
+        img: "tomato.jpeg",
+        space: "1 square foot",
+        id: "heirloom-tomato",
+        quantity: 0
+      },
+      {
+        title: "Spinach",
+        img: "spinach.jpg",
+        space: "2 square feet",
+        id: "spinach",
+        quantity: 0
+      },
+      {
+        title: "Pepper",
+        img: "pepper.jpeg",
+        space: "1 square foot",
+        id: "pepper",
+        quantity: 0
+      },
     ],
   },
   methods: {
     addPlant(){
       // this.quantity++;
+      console.log(this.plant);
     },
     subtractPlant(){
       if (this.quantity === 0) {
