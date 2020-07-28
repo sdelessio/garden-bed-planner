@@ -94,7 +94,7 @@
         <div class="inventory-grid-wrapper h-100 w-100">
           <div class="inventory-grid h-100 w-100" id="inventory-grid-container">
             <div data-value="item" class="item pepper"></div>
-            <div data-value="item" class="item tomato"></div>
+            <div data-value="item" class="item heirloom-tomato"></div>
       </div>
       </div>
     </div>
@@ -135,27 +135,34 @@
                   <div class="input-group plus-minus-input">
                     <span class="input-group-btn">
                       <button
-                        type="button"
                         class="btn btn-default btn-number minus-button"
                         :id="plant.id + '-minus-button'"
-                        v-on:click="subtractPlant()"
+                        v-on:click="plant.quantity--"
                       >
                         <span class="fa fa-minus"></span>
                       </button>
                     </span>
-                    <input
-                      type="text"
+                    <span
+                      type="number"
                       class="form-control input-number"
                       :id="plant.id + '-input-number'"
-                      :value="quantity"
-                      :min="0"
-                    />
+                      v-if="plant.quantity <= 0"
+                      min="0">
+                      0
+                    </span>
+                    <span
+                      type="number"
+                      class="form-control input-number"
+                      :id="plant.id + '-input-number'"
+                      min="0"
+                      v-if="plant.quantity > 0">
+                      {{plant.quantity}}
+                    </span>
                     <span class="input-group-btn">
                       <button
-                        type="button"
                         class="btn btn-default btn-number plus-button"
                         :id="plant.id + '-plus-button'"
-                        v-on:click="addPlant()"
+                        v-on:click="plant.quantity++"
                       >
                         <span class="fa fa-plus"></span>
                       </button>
@@ -191,6 +198,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+        <script src="PlantList.js"></script>
     <script src="scripts.js"></script>
   </body>
 </html>
