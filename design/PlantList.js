@@ -39,11 +39,7 @@ const app = new Vue({
     ],
   },
   methods: {
-    addPlant(event){
-      const inventoryContainer = document.getElementByID('inventory-grid-container');
-      const plantListItem = createElement("div");
-      plant.classList.add("item tomato");
-      inventoryContainer.appendChild(plantListItem)
+    addPlant(){
       // this.quantity++;
     },
     subtractPlant(){

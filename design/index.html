@@ -93,8 +93,7 @@
 
         <div class="inventory-grid-wrapper h-100 w-100">
           <div class="inventory-grid h-100 w-100" id="inventory-grid-container">
-            <div data-value="item" class="item pepper"></div>
-            <div data-value="item" class="item heirloom-tomato"></div>
+            <div v-for="plant in plantList" :class="plant.id + ' item'"></div>
       </div>
       </div>
     </div>
@@ -162,7 +161,7 @@
                       <button
                         class="btn btn-default btn-number plus-button"
                         :id="plant.id + '-plus-button'"
-                        v-on:click="plant.quantity++"
+                        v-on:click="addPlant"
                       >
                         <span class="fa fa-plus"></span>
                       </button>
