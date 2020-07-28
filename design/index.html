@@ -93,7 +93,7 @@
 
         <div class="inventory-grid-wrapper h-100 w-100">
           <div class="inventory-grid h-100 w-100" id="inventory-grid-container">
-            <div v-for="plant in plantList" :class="plant.id + ' item'"></div>
+            <inventory-list-plant v-for="plant in plantList" :class="plant.id + ' item'"/>
       </div>
       </div>
     </div>
@@ -161,7 +161,7 @@
                       <button
                         class="btn btn-default btn-number plus-button"
                         :id="plant.id + '-plus-button'"
-                        v-on:click="addPlant"
+                        v-on:click="plant.quantity++"
                       >
                         <span class="fa fa-plus"></span>
                       </button>
@@ -196,8 +196,8 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
-        <script src="PlantList.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="PlantList.js"></script>
     <script src="scripts.js"></script>
   </body>
 </html>
