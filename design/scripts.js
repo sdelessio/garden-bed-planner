@@ -1,29 +1,31 @@
-var sideNavButton = document.getElementById("toggle-search-drawer-button");
-sideNavButton.addEventListener("click", toggleSidenav);
-var sideNav = document.getElementById("mySidenav");
-var sideNavContainer = document.getElementById("sidenav-container");
-var closeNavButton = document.getElementById("close-nav-button");
-closeNavButton.addEventListener("click", closeSideNav);
+// Toggle side panel with search button
 
-function toggleSidenav() {
+const sidePanelButton = document.getElementById("toggle-search-drawer-button");
+sidePanelButton.addEventListener("click", toggleSidePanel);
+const sidePanel = document.getElementById("my-side-panel");
+const sidePanelContainer = document.getElementById("side-panel-container");
+const closePanelButton = document.getElementById("close-panel-button");
+closePanelButton.addEventListener("click", closeSidePanel);
+
+function toggleSidePanel() {
   if (
-    sideNav.style.transform === "translate(500px)" ||
-    sideNav.style.transform === ""
+    sidePanel.style.transform === "translate(500px)" ||
+    sidePanel.style.transform === ""
   ) {
-    sideNav.style.transform = "translate(0px)";
-    sideNav.style.boxShadow = "0 19px 38px rgba(0, 0, 0, 0.3)";
-    sideNavButton.style.transform = "translate(0px)";
-    sideNavContainer.style.zIndex = "4";
+    sidePanel.style.transform = "translate(0px)";
+    sidePanel.style.boxShadow = "0 19px 38px rgba(0, 0, 0, 0.3)";
+    sidePanelButton.style.transform = "translate(0px)";
+    sidePanelContainer.style.zIndex = "4";
   } else {
-    sideNav.style.transform = "translate(500px)";
-    sideNav.style.boxShadow = "none";
-    sideNavButton.style.transform = "translate(500px)";
-    sideNavContainer.style.zIndex = "";
+    sidePanel.style.transform = "translate(500px)";
+    sidePanel.style.boxShadow = "none";
+    sidePanelButton.style.transform = "translate(500px)";
+    sidePanelContainer.style.zIndex = "";
   }
 }
 
-function closeSideNav() {
-  sideNav.style.transform = "translate(500px)";
-  sideNav.style.boxShadow = "none";
-  sideNavButton.style.transform = "translate(500px)";
+function closeSidePanel() {
+  sidePanel.style.transform = "translate(500px)";
+  sidePanel.style.boxShadow = "none";
+  sidePanelButton.style.transform = "translate(500px)";
 }

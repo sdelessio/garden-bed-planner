@@ -32,7 +32,7 @@ h6 {
   display: none;
 }
 
-.sidenav {
+.side-panel {
   height: 100%;
   width: 500px;
   top: 0;
@@ -45,7 +45,7 @@ h6 {
   box-shadow: none;
 }
 
-.sidenav-container {
+.side-panel-container {
   position: fixed;
   display: flex;
   flex-direction: row;
@@ -67,6 +67,7 @@ h6 {
   border-bottom-left-radius: 80px;
   border-top-left-radius: 80px;
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3);
+  font-size: 1.5em;
 }
 
 #search-bar {
@@ -307,6 +308,7 @@ h6 {
   background-color: #ec572c;
   border-radius: 5px;
   color: #f4f8ef;
+  font-size: 2em;
 }
 
 .plus-minus-input {
