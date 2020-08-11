@@ -205,7 +205,7 @@ h6 {
 .heirloom-tomato {
   /* grid-column: auto / span 2;
   grid-row: auto / span 2; */
-  background-image: url("static/tomato.jpeg");
+  background-image: url("/tomato.e653cbcb.jpeg");
   width: 72px !important;
   height: 72px !important;
 }
@@ -213,7 +213,7 @@ h6 {
 .pepper {
   /* grid-column: auto / span 1;
   grid-row: auto / span 1; */
-  background-image: url("static/pepper.jpeg");
+  background-image: url("/pepper.f772f72a.jpeg");
   width: 72px !important;
   height: 72px !important;
 }
@@ -221,7 +221,7 @@ h6 {
 .spinach {
   /* grid-column: auto / span 3;
   grid-row: auto / span 3; */
-  background-image: url("static/spinach.jpg");
+  background-image: url("/spinach.4504789e.jpg");
   width: 72px !important;
   height: 72px !important;
 }
@@ -336,3 +336,6 @@ h6 {
     display: block;
   }
 }
+
+
+/*# sourceMappingURL=/style.e308ff8e.css.map */

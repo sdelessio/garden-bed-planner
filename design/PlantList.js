@@ -7,7 +7,6 @@ const app = new Vue({
   el: "#app",
   data: {
     quantity: 0,
-    disabled: 0,
     search: "",
     plantList: [
       {
@@ -44,6 +43,9 @@ const app = new Vue({
       } else {
       this.quantity--;
       }
+    },
+    addToInventory(){
+      var className = document.getElementById("inventory-grid-container");
     }
   },
   computed: {
