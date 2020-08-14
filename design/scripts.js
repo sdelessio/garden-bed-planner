@@ -6,6 +6,13 @@ const sidePanel = document.getElementById("my-side-panel");
 const sidePanelContainer = document.getElementById("side-panel-container");
 const closePanelButton = document.getElementById("close-panel-button");
 closePanelButton.addEventListener("click", closeSidePanel);
+const inventoryItem = document
+  .querySelector(".inventory-grid")
+  .querySelectorAll(".item");
+const plot = document.getElementById("plot-container").querySelectorAll(".plot");
+const inventoryGrid = document.querySelector(".inventory-grid");
+const plotContainer = document.getElementById("plot-container");
+const plusButtons = document.querySelectorAll('.plus-button');
 
 function toggleSidePanel() {
   if (
@@ -30,14 +37,6 @@ function closeSidePanel() {
   sidePanelButton.style.transform = "translate(500px)";
 }
 
-// Empty containers text
-
-const inventoryItem = document
-  .querySelector(".inventory-grid")
-  .querySelectorAll(".item");
-const plot = document.getElementById("plot-container").querySelectorAll(".plot");
-const inventoryGrid = document.querySelector(".inventory-grid");
-const plotContainer = document.getElementById("plot-container");
 //Add empty inventory text if there are no items in the inventory-grid
 if (inventoryItem.length == 0) {
   const tag = document.createElement("p");
@@ -58,3 +57,15 @@ if (plot.length == 0) {
   tag.appendChild(text);
   plotContainer.appendChild(tag);
 }
+
+// Add items to inventoryGrid
+function addInventoryItem(e) {
+  const inventoryItemID = this.closest('.list-item').id;
+  const newItem = document.createElement('div');
+  plusButtons.forEach(function(plusButton) {
+      newItem.className = 'item ' + inventoryItemID + ' ui-draggable ui-draggable-handle';
+      inventoryGrid.appendChild(newItem);
+  })
+}
+
+plusButtons.forEach(plusButton => plusButton.addEventListener('click', addInventoryItem));

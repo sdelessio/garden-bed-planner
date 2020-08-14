@@ -126,7 +126,7 @@
               />
             </div>
             <div class="list-group">
-              <div class="list-item" v-for="plant in filteredList">
+              <div class="list-item" :id="plant.id" v-for="plant in filteredList">
                 <div class="row">
                   <div class="col-md-5 col-lg-3 col-xl-3">
                     <img

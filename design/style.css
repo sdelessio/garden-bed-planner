@@ -207,7 +207,8 @@ h6 {
 }
 
 .inventory-grid > .item {
-  position: absolute;
+  position: relative;
+  display: inline-block;
 }
 
 .plot-grid > .item {
