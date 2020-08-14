@@ -8,23 +8,39 @@ jq(document).ready(function () {
     revert: "invalid"
   });
   jq(".inventory-grid").droppable({
-    drop: function (event, ui) {
-        jq(".inventory-grid").append(ui.draggable);
-    },
-    accept: ".item"
+    accept: ".item",
+    tolerance: "touch"
   });
   jq(".plot-grid").droppable({
-    drop: function (event, ui) {
-        var target = jq(".item");
-        if(target.parent('.inventory-grid').length){
-            jq(".plot-grid").append(ui.draggable.clone());
-        }
-        else {
-            jq(".plot-grid").append(ui.draggable);
-        }
-    },
-    accept: ".item"
+    accept: ".item",
+    tolerance: "touch"
   });
+  // jq(".inventory-grid").droppable({
+  //   tolerance: 'touch',
+  //   drop: function (event, ui) {
+  //       var target = jq(".item");
+  //     if(target.parent('.plot-grid').length){
+  //         jq(".inventory-grid").append(ui.draggable.clone());
+  //     }
+  //     else {
+  //         jq(".inventory-grid").append(ui.draggable);
+  //     }
+  //   },
+  //   accept: ".item"
+  // });
+  // jq(".plot-grid").droppable({
+  //   tolerance: 'touch',
+  //   drop: function (event, ui) {
+  //       var target = jq(".item");
+  //       if(target.parent('.inventory-grid').length){
+  //           jq(".plot-grid").append(ui.draggable.clone());
+  //       }
+  //       else {
+  //           jq(".plot-grid").append(ui.draggable);
+  //       }
+  //   },
+  //   accept: ".item"
+  // });
 
   function createGrid(size) {
     var i,

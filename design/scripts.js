@@ -29,3 +29,32 @@ function closeSidePanel() {
   sidePanel.style.boxShadow = "none";
   sidePanelButton.style.transform = "translate(500px)";
 }
+
+// Empty containers text
+
+const inventoryItem = document
+  .querySelector(".inventory-grid")
+  .querySelectorAll(".item");
+const plot = document.getElementById("plot-container").querySelectorAll(".plot");
+const inventoryGrid = document.querySelector(".inventory-grid");
+const plotContainer = document.getElementById("plot-container");
+//Add empty inventory text if there are no items in the inventory-grid
+if (inventoryItem.length == 0) {
+  const tag = document.createElement("p");
+  tag.className = "column-empty-text";
+  const text = document.createTextNode(
+    "You have nothing in your inventory. Click search button to add plants"
+  );
+  tag.appendChild(text);
+  inventoryGrid.appendChild(tag);
+}
+//Add empty plot text if there are no plots in the plot container
+if (plot.length == 0) {
+  const tag = document.createElement("p");
+  tag.className = "column-empty-text";
+  const text = document.createTextNode(
+    "No plots added. Click "+" button to add a plot"
+  );
+  tag.appendChild(text);
+  plotContainer.appendChild(tag);
+}

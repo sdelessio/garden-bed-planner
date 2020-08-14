@@ -4,7 +4,7 @@ Vue.component('inventory-list-plant', {
 })
 
 const app = new Vue({
-  el: "#app",
+  el: "#garden-bed-planner",
   data: {
     quantity: 0,
     search: "",

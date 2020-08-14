@@ -19,6 +19,8 @@ h6 {
   font-weight: bold;
 }
 
+/* Add a plot modal */
+
 .modal-content {
   background-color: #f4f8ef;
 }
@@ -27,63 +29,6 @@ h6 {
   flex-grow: 1;
   margin: 5px;
 }
-
-.mobile-only {
-  display: none;
-}
-
-.side-panel {
-  height: 100%;
-  width: 500px;
-  top: 0;
-  transform: translate(500px);
-  overflow-x: hidden;
-  background-color: #f4f8ef;
-  transition: 0.5s;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-}
-
-.side-panel-container {
-  position: fixed;
-  display: flex;
-  flex-direction: row;
-  right: 0;
-  height: 100%;
-  top: 0;
-}
-
-#toggle-search-drawer-button {
-  position: relative;
-  transform: translate(500px);
-  height: 80px;
-  align-self: center;
-  background-color: #ec572c;
-  color: #f4f8ef;
-  z-index: 1000;
-  transition: 0.5s;
-  width: 40px;
-  border-bottom-left-radius: 80px;
-  border-top-left-radius: 80px;
-  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3);
-  font-size: 1.5em;
-}
-
-#search-bar {
-  height: 75px;
-  font-family: FontAwesome, "Nunito", sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  text-decoration: inherit;
-}
-
-/* #search-bar-container > .input-group-append > span {
-  width: 75px;
-  border-radius: 0px;
-  background-color: #ec572c;
-  border: none;
-} */
 
 #add-plot-modal > .modal-dialog > .modal-content > .modal-body > button {
   height: 200px;
@@ -95,46 +40,6 @@ h6 {
   box-shadow: 0 1px 3px rgba(34, 13, 30, 0.12), 0 1px 2px rgba(34, 13, 30, 0.24);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
-
-.circular-plot {
-  height: 500px;
-  width: 500px;
-  border-radius: 50%;
-  overflow: hidden;
-}
-
-.plot {
-  -webkit-box-shadow: 20px 1px 0px -1px rgba(35, 13, 31, 0.3);
-  -moz-box-shadow: 20px 1px 0px -1px rgba(35, 13, 31, 0.3);
-  box-shadow: 20px 1px 0px -1px rgba(35, 13, 31, 0.3);
-  background-color: rgba(34, 13, 30, 0.65);
-  border: 30px ridge #ec572c;
-  /* padding: 10px; */
-}
-.rectangular-plot {
-  /* default 60in by 60 in */
-  height: 720px;
-  width: 720px;
-}
-
-.input-group-text {
-  background-color: #acbc8a;
-  color: #f4f8ef;
-}
-
-.placeholder {
-  border: 1px solid black;
-  height: 100px;
-  width: 100px;
-}
-/*
-.triangular-plot {
-  width: 0;
-  height: 0;
-  border-left: 50px solid transparent;
-  border-right: 50px solid transparent;
-  border-bottom: 100px solid red;
-} */
 
 .plot-pagination > button {
   background-color: #fff;
@@ -159,72 +64,44 @@ h6 {
   background-image: url("https://www.sticker.com/picture_library/product_images/colored-stickers/fluorescent-pink-paper-circle-stickers.png");
 }
 
-/* .inventory-grid-wrapper {
-  width: 100%;
+/* Side panel */
+
+.side-panel {
   height: 100%;
-  overflow-y: scroll;
+  width: 500px;
   top: 0;
-  position: absolute;
+  transform: translate(500px);
+  overflow-x: hidden;
+  background-color: #f4f8ef;
+  transition: 0.5s;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.side-panel-container {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  right: 0;
+  height: 100%;
+  top: 0;
+}
+
+#search-bar {
+  height: 75px;
+  font-family: FontAwesome, "Nunito", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+}
+
+/* #search-bar-container > .input-group-append > span {
+  width: 75px;
+  border-radius: 0px;
+  background-color: #ec572c;
+  border: none;
 } */
-
-.grid {
-  /* display: grid;
-  gap: 10px 10px; */
-  position: relative;
-}
-
-.item {
-  margin: 5px;
-  background-color: #fff;
-  border-radius: 4px;
-  box-shadow: 0 1px 3px rgba(34, 13, 30, 0.12), 0 1px 2px rgba(34, 13, 30, 0.24);
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-  touch-action: none;
-  user-select: none;
-  z-index: 3;
-}
-
-.inventory-grid > .item {
-  position: absolute;
-}
-
-.plot-grid > .item {
-  position: absolute;
-}
-
-.gridlines {
-  display: none;
-  position:absolute;
-  background-color:rgba(244, 248, 239, .5) ;
-}
-
-/* 12 pixels is equal to one inch */
-
-.heirloom-tomato {
-  /* grid-column: auto / span 2;
-  grid-row: auto / span 2; */
-  background-image: url("static/tomato.jpeg");
-  width: 72px !important;
-  height: 72px !important;
-}
-
-.pepper {
-  /* grid-column: auto / span 1;
-  grid-row: auto / span 1; */
-  background-image: url("static/pepper.jpeg");
-  width: 72px !important;
-  height: 72px !important;
-}
-
-.spinach {
-  /* grid-column: auto / span 3;
-  grid-row: auto / span 3; */
-  background-image: url("static/spinach.jpg");
-  width: 72px !important;
-  height: 72px !important;
-}
 
 .list-group {
   padding: 0px 15px;
@@ -257,16 +134,149 @@ h6 {
   background-color: #acbc8a;
 }
 
+.plus-minus-input {
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  max-width: 150px;
+}
+
+.plus-minus-input > .form-control {
+  border-top: none;
+  border-bottom: none;
+  font-family: FontAwesome, "Nunito", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+}
+
+/* Plots */
+
+.circular-plot {
+  height: 500px;
+  width: 500px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.plot {
+  -webkit-box-shadow: 20px 1px 0px -1px rgba(35, 13, 31, 0.3);
+  -moz-box-shadow: 20px 1px 0px -1px rgba(35, 13, 31, 0.3);
+  box-shadow: 20px 1px 0px -1px rgba(35, 13, 31, 0.3);
+  background-color: rgba(34, 13, 30, 0.65);
+  border: 30px ridge #ec572c;
+  /* padding: 10px; */
+}
+.rectangular-plot {
+  /* default 60in by 60 in */
+  height: 720px;
+  width: 720px;
+}
+
+/*
+.triangular-plot {
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 100px solid red;
+} */
+
+/* Plot size inputs */
+
+.input-group-text {
+  background-color: #acbc8a;
+  color: #f4f8ef;
+}
+
+.placeholder {
+  border: 1px solid black;
+  height: 100px;
+  width: 100px;
+}
+
+/* Grids */
+
+.inventory-grid-wrapper {
+  overflow-y: scroll;
+}
+
+.grid {
+  /* display: grid;
+  gap: 10px 10px; */
+  position: relative;
+}
+
+.inventory-grid > .item {
+  position: absolute;
+}
+
+.plot-grid > .item {
+  position: absolute;
+}
+
+.gridlines {
+  display: none;
+  position: absolute;
+  background-color: rgba(244, 248, 239, 0.5);
+}
+
+/* Grid items */
+
+.item {
+  margin: 5px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(34, 13, 30, 0.12), 0 1px 2px rgba(34, 13, 30, 0.24);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  touch-action: none;
+  user-select: none;
+  z-index: 3;
+}
+
+/* 12 pixels is equal to one inch */
+
+.heirloom-tomato {
+  /* grid-column: auto / span 2;
+  grid-row: auto / span 2; */
+  background-image: url("static/tomato.jpeg");
+  width: 72px !important;
+  height: 72px !important;
+}
+
+.pepper {
+  /* grid-column: auto / span 1;
+  grid-row: auto / span 1; */
+  background-image: url("static/pepper.jpeg");
+  width: 72px !important;
+  height: 72px !important;
+}
+
+.spinach {
+  /* grid-column: auto / span 3;
+  grid-row: auto / span 3; */
+  background-image: url("static/spinach.jpg");
+  width: 72px !important;
+  height: 72px !important;
+}
+
 #plot-container {
   /* background: url("farmer.png"); */
   background-color: #acbc8a;
-  overflow: scroll;
+  /* overflow: scroll; */
   padding: 50px;
 }
+
+/* Plot and inventory containers */
 
 #plot-container,
 #inventory-container {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
 }
 
 .plot-container-footer,
@@ -295,12 +305,7 @@ h6 {
   max-width: 200px;
 }
 
-.flexbox {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-flow: column;
-}
+/* Toggle modals and sidebar buttons */
 
 #add-plot-button {
   width: 60px;
@@ -311,24 +316,29 @@ h6 {
   font-size: 2em;
 }
 
-.plus-minus-input {
-  border: 1px solid #ced4da;
-  border-radius: 4px;
-  max-width: 150px;
-}
-
-.plus-minus-input > .form-control {
-  border-top: none;
-  border-bottom: none;
-  font-family: FontAwesome, "Nunito", sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  text-decoration: inherit;
+#toggle-search-drawer-button {
+  position: relative;
+  transform: translate(500px);
+  height: 80px;
+  align-self: center;
+  background-color: #ec572c;
+  color: #f4f8ef;
+  z-index: 1000;
+  transition: 0.5s;
+  width: 40px;
+  border-bottom-left-radius: 80px;
+  border-top-left-radius: 80px;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3);
+  font-size: 1.5em;
 }
 
 .column-empty-text {
   font-size: 22px;
   font-weight: bold;
+}
+
+.mobile-only {
+  display: none;
 }
 
 @media (max-width: 576px) {

@@ -20,38 +20,54 @@
       integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
       crossorigin="anonymous"
     />
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css?v=1.0" />
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   </head>
 
   <body>
-    <div class="container-fluid h-100" id="app">
-      <div class="h-100" id="garden-bed-planner">
+    <div class="container-fluid h-100" id="garden-bed-planner">
       <div class="row h-100">
         <div class="col-sm-8 p-0 h-100">
-          <div class="h-100 flexbox" id="plot-container">
-          <div class="plot-container-header">
-            <div class="input-group">
-  <input min="0" type="number" class="form-control" id="width-input" placeholder="Length" aria-label="Length" aria-describedby="length-addon">
-  <div class="input-group-append">
-    <span class="input-group-text" id="length-addon">inches</span>
-  </div>
-</div>
-<div class="input-group">
-<input type="number" class="form-control" id="height-input" placeholder="Height" aria-label="Height" aria-describedby="height-addon">
-<div class="input-group-append">
-<span class="input-group-text" id="height-addon">inches</span>
-</div>
-</div>
-          </div>
-          <!-- <p class="column-empty-text">
-            No plots added. Click "+" button to add a plot
-          </p> -->
-          <div class="plot rectangular-plot">
-            <div class="grid plot-grid h-100 w-100" id="plot-grid-container"></div>
-          </div>
+          <div class="h-100" id="plot-container">
+            <div class="plot-container-header">
+              <div class="input-group">
+                <input
+                  min="0"
+                  type="number"
+                  class="form-control"
+                  id="width-input"
+                  placeholder="Length"
+                  aria-label="Length"
+                  aria-describedby="length-addon"
+                />
+                <div class="input-group-append">
+                  <span class="input-group-text" id="length-addon">inches</span>
+                </div>
+              </div>
+              <div class="input-group">
+                <input
+                  type="number"
+                  class="form-control"
+                  id="height-input"
+                  placeholder="Height"
+                  aria-label="Height"
+                  aria-describedby="height-addon"
+                />
+                <div class="input-group-append">
+                  <span class="input-group-text" id="height-addon">inches</span>
+                </div>
+              </div>
+            </div>
+            <div class="plot rectangular-plot">
+              <div class="grid plot-grid h-100 w-100" id="plot-grid">
+                <div class="pepper item"></div>
+              </div>
+            </div>
           </div>
           <div class="plot-container-footer">
             <div class="plot-pagination">
@@ -59,123 +75,156 @@
               <button type="button" class="btn triangle"></button>
               <button type="button" class="btn circle"></button>
             </div>
-            <button type="button" class="btn" id="add-plot-button" data-toggle="modal" data-target="#add-plot-modal">
+            <button
+              type="button"
+              class="btn"
+              id="add-plot-button"
+              data-toggle="modal"
+              data-target="#add-plot-modal"
+            >
               <i class="fa fa-plus"></i>
             </button>
-            <!-- Modal -->
-            <div class="modal fade" id="add-plot-modal" tabindex="-1" role="dialog" aria-labelledby="addPlotModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title d-block text-center w-100" id="addPlotModalLabel">Add a plot</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
+          </div>
+        </div>
+        <div class="col-sm-4 h-100">
+          <div class="h-100" id="inventory-container">
+            <div class="inventory-grid-wrapper h-100 w-100">
+              <div
+                class="inventory-grid h-100 w-100"
+                id="inventory-grid-container"
+              >
+                <!-- <inventory-list-plant v-for="plant in plantList" :class="plant.id + ' item'"/> -->
+                <div class="pepper item"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="side-panel-container" id="side-panel-container">
+          <button type="button" class="btn" id="toggle-search-drawer-button">
+            <i class="fa fa-search"></i>
+          </button>
+          <div id="my-side-panel" class="side-panel">
+            <div class="side-panel-header w-100 d-flex justify-content-end">
+              <button
+                type="button"
+                class="mobile-only btn align-self-end"
+                aria-label="Close side panel"
+                id="close-panel-button"
+              >
+                <span aria-hidden="true"><i class="fa fa-close"></i></span>
+              </button>
+            </div>
+            <div class="input-group mb-3" id="search-bar-container">
+              <input
+                type="search"
+                v-model="search"
+                class="form-control search-plants-input"
+                placeholder="&#xf002; Search for plants"
+                aria-label="Search plants"
+                aria-describedby="basic-addon2"
+                id="search-bar"
+              />
+            </div>
+            <div class="list-group">
+              <div class="list-item" v-for="plant in filteredList">
+                <div class="row">
+                  <div class="col-md-5 col-lg-3 col-xl-3">
+                    <img
+                      class="img-fluid w-100"
+                      v-bind:src="plant.img"
+                      :alt="plant.title"
+                    />
                   </div>
-                  <div class="modal-body d-flex justify-content-between">
-                    <button class="circle"></button>
-                    <button class="rectangle"></button>
-                    <button class="triangle"></button>
-                  </div>
-                  <div class="modal-footer">
-                    <!-- <button type="button" class="btn btn-primary">Okay</button> -->
+                  <div class="col-md-7 col-lg-9 col-xl-9">
+                    <div>
+                      <h2>{{ plant.title }}</h2>
+                      <p><b>Space required: </b>{{plant.space}}</p>
+                    </div>
+                    <div class="input-group plus-minus-input">
+                      <span class="input-group-btn">
+                        <button
+                          class="btn btn-default btn-number minus-button"
+                          :id="plant.id + '-minus-button'"
+                          v-on:click="plant.quantity--"
+                        >
+                          <span class="fa fa-minus"></span>
+                        </button>
+                      </span>
+                      <span
+                        type="number"
+                        class="form-control input-number"
+                        :id="plant.id + '-input-number'"
+                        v-if="plant.quantity <= 0"
+                        min="0"
+                      >
+                        0
+                      </span>
+                      <span
+                        type="number"
+                        class="form-control input-number"
+                        :id="plant.id + '-input-number'"
+                        min="0"
+                        v-if="plant.quantity > 0"
+                      >
+                        {{plant.quantity}}
+                      </span>
+                      <span class="input-group-btn">
+                        <button
+                          class="btn btn-default btn-number plus-button"
+                          :id="plant.id + '-plus-button'"
+                          v-on:click="plant.quantity++"
+                        >
+                          <span class="fa fa-plus"></span>
+                        </button>
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-sm-4 h-100">
-          <div class="h-100 flexbox" id="inventory-container">
-          <!-- <p class="column-empty-text">
-            You have nothing in your inventory. Click search button to add plants
-          </p> -->
+      </div>
+    </div>
 
-        <div class="inventory-grid-wrapper h-100 w-100">
-          <div class="inventory-grid h-100 w-100" id="inventory-grid-container">
-            <inventory-list-plant v-for="plant in plantList" :class="plant.id + ' item'"/>
-      </div>
-      </div>
-    </div>
-  </div>
-    <div class="side-panel-container" id="side-panel-container">
-      <button type="button" class="btn" id="toggle-search-drawer-button">
-        <i class="fa fa-search"></i>
-      </button>
-      <div id="my-side-panel" class="side-panel">
-        <div class="side-panel-header w-100 d-flex justify-content-end"><button type="button" class="mobile-only btn align-self-end" aria-label="Close side panel" id="close-panel-button">
-  <span aria-hidden="true"><i class="fa fa-close"></i></span>
-</button></div>
-        <div class="input-group mb-3" id="search-bar-container">
-          <input
-            type="search"
-            v-model="search"
-            class="form-control search-plants-input"
-            placeholder="&#xf002; Search for plants"
-            aria-label="Search plants"
-            aria-describedby="basic-addon2"
-            id="search-bar"
-          />
-        </div>
-        <div class="list-group">
-          <div class="list-item" v-for="plant in filteredList">
-          <div class="row">
-            <div class="col-md-5 col-lg-3 col-xl-3">
-              <img
-                class="img-fluid w-100"
-                v-bind:src="plant.img" :alt="plant.title"
-              />
-            </div>
-            <div class="col-md-7 col-lg-9 col-xl-9">
-                <div>
-                  <h2>{{ plant.title }}</h2>
-                  <p><b>Space required: </b>{{plant.space}}</p>
-                </div>
-                  <div class="input-group plus-minus-input">
-                    <span class="input-group-btn">
-                      <button
-                        class="btn btn-default btn-number minus-button"
-                        :id="plant.id + '-minus-button'"
-                        v-on:click="plant.quantity--"
-                      >
-                        <span class="fa fa-minus"></span>
-                      </button>
-                    </span>
-                    <span
-                      type="number"
-                      class="form-control input-number"
-                      :id="plant.id + '-input-number'"
-                      v-if="plant.quantity <= 0"
-                      min="0">
-                      0
-                    </span>
-                    <span
-                      type="number"
-                      class="form-control input-number"
-                      :id="plant.id + '-input-number'"
-                      min="0"
-                      v-if="plant.quantity > 0">
-                      {{plant.quantity}}
-                    </span>
-                    <span class="input-group-btn">
-                      <button
-                        class="btn btn-default btn-number plus-button"
-                        :id="plant.id + '-plus-button'"
-                        v-on:click="plant.quantity++"
-                      >
-                        <span class="fa fa-plus"></span>
-                      </button>
-                    </span>
-                  </div>
-            </div>
+    <!-- Add a plot modal -->
+    <div
+      class="modal fade"
+      id="add-plot-modal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="addPlotModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5
+              class="modal-title d-block text-center w-100"
+              id="addPlotModalLabel"
+            >
+              Add a plot
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body d-flex justify-content-between">
+            <button class="circle"></button>
+            <button class="rectangle"></button>
+            <button class="triangle"></button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Okay</button>
+          </div>
         </div>
       </div>
     </div>
-    </div>
-  </div>
-</div>
-</div>
-</div>
 
     <script src="./draggable.js"></script>
 
