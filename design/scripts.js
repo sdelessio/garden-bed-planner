@@ -1,3 +1,5 @@
+import {draggableOptions} from './draggable.js';
+
 // Toggle side panel with search button
 
 const sidePanelButton = document.getElementById("toggle-search-drawer-button");
@@ -64,16 +66,7 @@ function addInventoryItem(e) {
   const newItem = document.createElement('div');
   newItem.className = 'item ' + inventoryItemID;
   inventoryGrid.appendChild(newItem);
-  function makeItemsDraggable() {
-  jQuery(".item").draggable({
-    cursor: "move",
-    opacity: 0.5,
-    grid: [10, 10],
-    snap: ".gridlines",
-    revert: "invalid"
-  });
-  }
-  makeItemsDraggable();
+  jQuery(".item").draggable(draggableOptions);
 }
 
 

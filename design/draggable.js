@@ -17,6 +17,14 @@ jq(document).ready(function () {
   }
   jq(".inventory-grid").droppable(droppableOptions);
   jq(".plot-grid").droppable(droppableOptions);
+  jq(".delete-area").droppable({
+    accept: '.item',
+    activeClass: 'dropArea',
+    hoverClass: 'dropAreaHover',
+    drop: function(event, ui) {
+        ui.draggable.remove();
+    }
+});
 
   makeItemsDraggable();
 
@@ -91,3 +99,5 @@ jq("#width-input").on('input', function(){
 
 
 });
+
+export {draggableOptions};
