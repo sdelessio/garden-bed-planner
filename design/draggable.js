@@ -1,20 +1,25 @@
-var jq = $.noConflict();
+var jq = jQuery.noConflict();
+var draggableOptions = {
+  cursor: "move",
+  opacity: 0.5,
+  grid: [10, 10],
+  snap: ".gridlines",
+  revert: "invalid"
+};
+var droppableOptions = {
+  accept: ".item",
+  tolerance: "touch"
+};
+
 jq(document).ready(function () {
-  jq(".item").draggable({
-    cursor: "move",
-    opacity: 0.5,
-    grid: [10, 10],
-    snap: ".gridlines",
-    revert: "invalid"
-  });
-  jq(".inventory-grid").droppable({
-    accept: ".item",
-    tolerance: "touch"
-  });
-  jq(".plot-grid").droppable({
-    accept: ".item",
-    tolerance: "touch"
-  });
+  function makeItemsDraggable() {
+  jq(".item").draggable(draggableOptions);
+  }
+  jq(".inventory-grid").droppable(droppableOptions);
+  jq(".plot-grid").droppable(droppableOptions);
+
+  makeItemsDraggable();
+
   // jq(".inventory-grid").droppable({
   //   tolerance: 'touch',
   //   drop: function (event, ui) {
@@ -28,19 +33,6 @@ jq(document).ready(function () {
   //   },
   //   accept: ".item"
   // });
-  // jq(".plot-grid").droppable({
-  //   tolerance: 'touch',
-  //   drop: function (event, ui) {
-  //       var target = jq(".item");
-  //       if(target.parent('.inventory-grid').length){
-  //           jq(".plot-grid").append(ui.draggable.clone());
-  //       }
-  //       else {
-  //           jq(".plot-grid").append(ui.draggable);
-  //       }
-  //   },
-  //   accept: ".item"
-  // });
 
   function createGrid(size) {
     var i,
@@ -51,7 +43,7 @@ jq(document).ready(function () {
         ratioH = Math.floor(height / size);
 
     for (i = 0; i <= ratioW; i++) { // vertical grid lines
-      $('<div />').css({
+      jq('<div />').css({
             'top': 0,
             'left': i * size,
             'width': 1,
@@ -62,7 +54,7 @@ jq(document).ready(function () {
     }
 
     for (i = 0; i <= ratioH; i++) { // horizontal grid lines
-      $('<div />').css({
+      jq('<div />').css({
             'top': i * size,
             'left': 0,
             'width': width,
@@ -72,7 +64,7 @@ jq(document).ready(function () {
         .appendTo(sel);
     }
 
-    $('.gridlines').show();
+    jq('.gridlines').show();
 }
 
 createGrid(12);
@@ -96,5 +88,6 @@ jq("#width-input").on('input', function(){
   jq(".gridlines").remove();
   createGrid(12);
 });
+
 
 });

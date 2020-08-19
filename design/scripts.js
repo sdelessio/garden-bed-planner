@@ -62,10 +62,19 @@ if (plot.length == 0) {
 function addInventoryItem(e) {
   const inventoryItemID = this.closest('.list-item').id;
   const newItem = document.createElement('div');
-  plusButtons.forEach(function(plusButton) {
-      newItem.className = 'item ' + inventoryItemID + ' ui-draggable ui-draggable-handle';
-      inventoryGrid.appendChild(newItem);
-  })
+  newItem.className = 'item ' + inventoryItemID;
+  inventoryGrid.appendChild(newItem);
+  function makeItemsDraggable() {
+  jQuery(".item").draggable({
+    cursor: "move",
+    opacity: 0.5,
+    grid: [10, 10],
+    snap: ".gridlines",
+    revert: "invalid"
+  });
+  }
+  makeItemsDraggable();
 }
+
 
 plusButtons.forEach(plusButton => plusButton.addEventListener('click', addInventoryItem));
