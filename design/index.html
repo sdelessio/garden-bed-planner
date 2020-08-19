@@ -51,6 +51,7 @@
               </div>
               <div class="input-group">
                 <input
+                  min="0"
                   type="number"
                   class="form-control"
                   id="height-input"
@@ -151,7 +152,7 @@
                           <span class="fa fa-minus"></span>
                         </button>
                       </span>
-                      <span
+                      <!-- <span
                         type="number"
                         class="form-control input-number"
                         :id="plant.id + '-input-number'"
@@ -159,8 +160,10 @@
                         min="0"
                       >
                         0
-                      </span>
-                      <span
+                      </span> -->
+                      <input class="form-control input-number" :id="plant.id + '-input-number'"
+                      min="0" type="number" :value="plant.quantity">
+                      <!-- <span
                         type="number"
                         class="form-control input-number"
                         :id="plant.id + '-input-number'"
@@ -168,7 +171,7 @@
                         v-if="plant.quantity > 0"
                       >
                         {{plant.quantity}}
-                      </span>
+                      </span> -->
                       <span class="input-group-btn">
                         <button
                           class="btn btn-default btn-number plus-button"

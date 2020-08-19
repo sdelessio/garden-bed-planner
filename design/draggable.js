@@ -81,7 +81,7 @@ createGrid(12);
 jq("#height-input").on('input', function(){
   var value = jq(this).val();
   // Each inch is equal to 12 pixels
-  convertedValue = value * 12;
+  var convertedValue = value * 12;
   jq(".rectangular-plot").height(convertedValue);
   jq(".gridlines").remove();
   createGrid(12);
@@ -91,7 +91,7 @@ jq("#height-input").on('input', function(){
 jq("#width-input").on('input', function(){
   var value = jq(this).val();
   // Each inch is equal to 12 pixels
-  convertedValue = value * 12;
+  var convertedValue = value * 12;
   jq(".rectangular-plot").width(convertedValue);
   jq(".gridlines").remove();
   createGrid(12);
