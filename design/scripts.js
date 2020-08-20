@@ -1,7 +1,5 @@
 import {draggableOptions} from './draggable.js';
 
-// Toggle side panel with search button
-
 const sidePanelButton = document.getElementById("toggle-search-drawer-button");
 sidePanelButton.addEventListener("click", toggleSidePanel);
 const sidePanel = document.getElementById("my-side-panel");
@@ -16,6 +14,7 @@ const inventoryGrid = document.querySelector(".inventory-grid");
 const plotContainer = document.getElementById("plot-container");
 const plusButtons = document.querySelectorAll('.plus-button');
 const plantNumberInputs = document.querySelectorAll('.input-number');
+let previousValue;
 
 function toggleSidePanel() {
   if (
@@ -71,20 +70,21 @@ if (plot.length == 0) {
 // }
 
 function toggleInventoryItems() {
-  let defaultVal = 0;
   const val = this.value;
+  // Find the id of the list item parent of the number input
   const inventoryItemID = this.closest('.list-item').id;
-  const newItem = document.createElement('div');
-  newItem.className = 'item ' + inventoryItemID;
-  inventoryGrid.appendChild(newItem);
-  if (defaultVal < val) {
+  // Check if input value was increased or decreased
+  if (this.previousValue < val || this.previousValue == null) {
+    console.log(this.previousValue + "increased");
+    const newItem = document.createElement('div');
+    newItem.className = 'item ' + inventoryItemID;
     inventoryGrid.appendChild(newItem);
+    // Reassign draggable to items
     jQuery(".item").draggable(draggableOptions);
-    defaultVal++;
-  } else {
-    // inventoryGrid.removeChild();
-    defaultVal--;
+  } else if (this.previousValue > val) {
+    console.log(this.previousValue + "decreased ")
   }
+  this.previousValue = val;
 }
 
 // plusButtons.forEach(plusButton => plusButton.addEventListener('click', addInventoryItem));
