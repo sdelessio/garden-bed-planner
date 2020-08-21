@@ -1,10 +1,13 @@
 var jq = jQuery.noConflict();
 var draggableOptions = {
-  cursor: "move",
   opacity: 0.5,
-  grid: [10, 10],
   snap: ".gridlines",
   revert: "invalid"
+};
+var draggablePlotOptions = {
+  opacity: 0.5,
+  revert: "invalid",
+  cancel: false
 };
 var droppableOptions = {
   accept: ".item",
@@ -15,10 +18,11 @@ jq(document).ready(function () {
   function makeItemsDraggable() {
   jq(".item").draggable(draggableOptions);
   }
+  jq(".plot-item").draggable(draggablePlotOptions);
   jq(".inventory-grid").droppable(droppableOptions);
   jq(".plot-grid").droppable(droppableOptions);
   jq(".delete-area").droppable({
-    accept: '.item',
+    accept: '.item, .plot-item',
     activeClass: 'dropArea',
     hoverClass: 'dropAreaHover',
     drop: function(event, ui) {
