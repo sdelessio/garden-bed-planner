@@ -163,7 +163,7 @@
                         0
                       </span> -->
                       <input type="number" class="form-control input-number" :id="plant.id + '-input-number'"
-                      min="0" :value="plant.quantity">
+                      min="0" value="0">
                       <!-- <span
                         type="number"
                         class="form-control input-number"
@@ -186,7 +186,7 @@
                     <button class="btn btn-outline-success add-to-inventory-button" :id="plant.id + '-add-to-inventory-button'" style="margin-left: 5px;">Add to inventory</button>
                   </div>
                   <div style="display:flex; justify-content: flex-end;">
-                    <p style="margin-bottom: 0; margin-top: 10px;"><b>Total in inventory:</b> 1</p>
+                    <p style="margin-bottom: 0; margin-top: 10px;"><b>Total in inventory:</b> <span class="inventory-total" :id="plant.id + '-inventory-total'">0</span></p>
                   </div>
                   </div>
                 </div>

@@ -14,6 +14,9 @@ const inventoryGrid = document.querySelector(".inventory-grid");
 const plotContainer = document.getElementById("plot-container");
 const addToInventoryButtons = document.querySelectorAll('.add-to-inventory-button');
 const plantNumberInputs = document.querySelectorAll('.input-number');
+const inventoryTotal = document.querySelectorAll('.inventory-total');
+const plantLength = inventoryGrid.querySelectorAll('.item').length;
+console.log(plantLength);
 
 function toggleSidePanel() {
   if (
@@ -80,14 +83,17 @@ if (plot.length == 0) {
 function toggleInventoryItems() {
   // Find the id of the list-item parent of the number input
   const inventoryItemID = this.closest('.list-item').id;
-  const thisNumberInputValue = document.querySelector('#' + inventoryItemID + '-input-number').value;
-  console.log(thisNumberInputValue);
+  const thisNumberInput = document.querySelector('#' + inventoryItemID + '-input-number');
+  let thisNumberInputValue = document.querySelector('#' + inventoryItemID + '-input-number').value;
   for (let i=0;i<thisNumberInputValue;i++) {
     // Create a new item with inventoryItemID
     const newItem = document.createElement('div');
     newItem.className = 'item ' + inventoryItemID;
     inventoryGrid.appendChild(newItem);
   }
+  // Reset the input value back to 0 - TODO why is both thisNumberInputValue and thisNumberInput.value required?
+  thisNumberInput.value = "0";
+  thisNumberInputValue = 0;
   // Rerun draggable on items
   jQuery(".item").draggable(draggableOptions);
 }
