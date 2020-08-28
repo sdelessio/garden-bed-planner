@@ -142,8 +142,9 @@
                       <h2>{{ plant.title }}</h2>
                       <p><b>Space required: </b>{{plant.space}}</p>
                     </div>
+                    <div style="display: flex; justify-content: flex-start;">
                     <div class="input-group plus-minus-input">
-                      <span class="input-group-btn">
+                      <!-- <span class="input-group-btn">
                         <button
                           class="btn btn-default btn-number minus-button"
                           :id="plant.id + '-minus-button'"
@@ -151,7 +152,7 @@
                         >
                           <span class="fa fa-minus"></span>
                         </button>
-                      </span>
+                      </span> -->
                       <!-- <span
                         type="number"
                         class="form-control input-number"
@@ -172,7 +173,7 @@
                       >
                         {{plant.quantity}}
                       </span> -->
-                      <span class="input-group-btn">
+                      <!-- <span class="input-group-btn">
                         <button
                           class="btn btn-default btn-number plus-button"
                           :id="plant.id + '-plus-button'"
@@ -180,8 +181,13 @@
                         >
                           <span class="fa fa-plus"></span>
                         </button>
-                      </span>
+                      </span> -->
                     </div>
+                    <button class="btn btn-outline-success add-to-inventory-button" :id="plant.id + '-add-to-inventory-button'" style="margin-left: 5px;">Add to inventory</button>
+                  </div>
+                  <div style="display:flex; justify-content: flex-end;">
+                    <p style="margin-bottom: 0; margin-top: 10px;"><b>Total in inventory:</b> 1</p>
+                  </div>
                   </div>
                 </div>
               </div>

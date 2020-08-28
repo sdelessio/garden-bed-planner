@@ -135,18 +135,22 @@ h6 {
 }
 
 .plus-minus-input {
-  border: 1px solid #ced4da;
-  border-radius: 4px;
-  max-width: 150px;
+  /* border: 1px solid #ced4da;
+  border-radius: 4px; */
+  max-width: 6em;
 }
 
 .plus-minus-input > .form-control {
-  border-top: none;
-  border-bottom: none;
+  /* border-top: none;
+  border-bottom: none; */
   font-family: FontAwesome, "Nunito", sans-serif;
   font-style: normal;
   font-weight: normal;
   text-decoration: inherit;
+}
+
+.add-to-inventory-button {
+
 }
 
 /* Plots */

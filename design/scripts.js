@@ -12,9 +12,8 @@ const inventoryItem = document
 const plot = document.getElementById("plot-container").querySelectorAll(".plot");
 const inventoryGrid = document.querySelector(".inventory-grid");
 const plotContainer = document.getElementById("plot-container");
-const plusButtons = document.querySelectorAll('.plus-button');
+const addToInventoryButtons = document.querySelectorAll('.add-to-inventory-button');
 const plantNumberInputs = document.querySelectorAll('.input-number');
-let previousValue;
 
 function toggleSidePanel() {
   if (
@@ -60,33 +59,45 @@ if (plot.length == 0) {
   plotContainer.appendChild(tag);
 }
 
-// // Add items to inventoryGrid
-// function addInventoryItem(e) {
+// function toggleInventoryItems() {
+//   const val = this.value;
+//   // Find the id of the list item parent of the number input
 //   const inventoryItemID = this.closest('.list-item').id;
-//   const newItem = document.createElement('div');
-//   newItem.className = 'item ' + inventoryItemID;
-//   inventoryGrid.appendChild(newItem);
-//   jQuery(".item").draggable(draggableOptions);
+//   // Check if input value was increased or decreased
+//   if (this.previousValue < val || this.previousValue == null) {
+//     console.log(this.previousValue + "increased");
+//     const newItem = document.createElement('div');
+//     newItem.className = 'item ' + inventoryItemID;
+//     inventoryGrid.appendChild(newItem);
+//     // Reassign draggable to items
+//     jQuery(".item").draggable(draggableOptions);
+//   } else if (this.previousValue > val) {
+//     console.log(this.previousValue + "decreased ")
+//   }
+//   this.previousValue = val;
 // }
 
 function toggleInventoryItems() {
-  const val = this.value;
-  // Find the id of the list item parent of the number input
+  // Find the id of the list-item parent of the number input
   const inventoryItemID = this.closest('.list-item').id;
-  // Check if input value was increased or decreased
-  if (this.previousValue < val || this.previousValue == null) {
-    console.log(this.previousValue + "increased");
+  const thisNumberInputValue = document.querySelector('#' + inventoryItemID + '-input-number').value;
+  console.log(thisNumberInputValue);
+  for (let i=0;i<thisNumberInputValue;i++) {
+    // Create a new item with inventoryItemID
     const newItem = document.createElement('div');
     newItem.className = 'item ' + inventoryItemID;
     inventoryGrid.appendChild(newItem);
-    // Reassign draggable to items
-    jQuery(".item").draggable(draggableOptions);
-  } else if (this.previousValue > val) {
-    console.log(this.previousValue + "decreased ")
   }
-  this.previousValue = val;
+  // Rerun draggable on items
+  jQuery(".item").draggable(draggableOptions);
 }
 
-// plusButtons.forEach(plusButton => plusButton.addEventListener('click', addInventoryItem));
+// const itemLength = jQuery('.inventory-grid .pepper').length;
+// const pepperValInput = jQuery('#pepper-input-number').value;
+// let itemLength = pepperValInput;
+// console.log(itemLength);
+// console.log(pepperValInput);
 
-plantNumberInputs.forEach(plantNumberInput => plantNumberInput.addEventListener('change', toggleInventoryItems));
+
+
+addToInventoryButtons.forEach(addToInventoryButton => addToInventoryButton.addEventListener('click', toggleInventoryItems));
