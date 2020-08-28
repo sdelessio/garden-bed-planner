@@ -32,22 +32,6 @@ const app = new Vue({
       },
     ],
   },
-  methods: {
-    addPlant(){
-      // this.quantity++;
-      console.log(this.plant);
-    },
-    subtractPlant(){
-      if (this.quantity === 0) {
-        alert("Negative quantity not allowed");
-      } else {
-      this.quantity--;
-      }
-    },
-    addToInventory(){
-      var className = document.getElementById("inventory-grid-container");
-    }
-  },
   computed: {
     filteredList() {
       return this.plantList.filter((plant) => {

@@ -13,10 +13,7 @@ const plot = document.getElementById("plot-container").querySelectorAll(".plot")
 const inventoryGrid = document.querySelector(".inventory-grid");
 const plotContainer = document.getElementById("plot-container");
 const addToInventoryButtons = document.querySelectorAll('.add-to-inventory-button');
-const plantNumberInputs = document.querySelectorAll('.input-number');
-const inventoryTotal = document.querySelectorAll('.inventory-total');
 const plantLength = inventoryGrid.querySelectorAll('.item').length;
-console.log(plantLength);
 
 function toggleSidePanel() {
   if (
@@ -62,25 +59,7 @@ if (plot.length == 0) {
   plotContainer.appendChild(tag);
 }
 
-// function toggleInventoryItems() {
-//   const val = this.value;
-//   // Find the id of the list item parent of the number input
-//   const inventoryItemID = this.closest('.list-item').id;
-//   // Check if input value was increased or decreased
-//   if (this.previousValue < val || this.previousValue == null) {
-//     console.log(this.previousValue + "increased");
-//     const newItem = document.createElement('div');
-//     newItem.className = 'item ' + inventoryItemID;
-//     inventoryGrid.appendChild(newItem);
-//     // Reassign draggable to items
-//     jQuery(".item").draggable(draggableOptions);
-//   } else if (this.previousValue > val) {
-//     console.log(this.previousValue + "decreased ")
-//   }
-//   this.previousValue = val;
-// }
-
-function toggleInventoryItems() {
+function addPlantsToInventory() {
   // Find the id of the list-item parent of the number input
   const inventoryItemID = this.closest('.list-item').id;
   const thisNumberInput = document.querySelector('#' + inventoryItemID + '-input-number');
@@ -98,12 +77,4 @@ function toggleInventoryItems() {
   jQuery(".item").draggable(draggableOptions);
 }
 
-// const itemLength = jQuery('.inventory-grid .pepper').length;
-// const pepperValInput = jQuery('#pepper-input-number').value;
-// let itemLength = pepperValInput;
-// console.log(itemLength);
-// console.log(pepperValInput);
-
-
-
-addToInventoryButtons.forEach(addToInventoryButton => addToInventoryButton.addEventListener('click', toggleInventoryItems));
+addToInventoryButtons.forEach(addToInventoryButton => addToInventoryButton.addEventListener('click', addPlantsToInventory));
