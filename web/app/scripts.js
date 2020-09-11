@@ -1,0 +1,246 @@
+import {
+  draggableOptions,
+  draggablePlotOptions,
+  droppableOptions,
+} from "./draggable.js";
+
+const sidePanelButton = document.getElementById("toggle-search-drawer-button");
+const sidePanel = document.getElementById("my-side-panel");
+const sidePanelContainer = document.getElementById("side-panel-container");
+const closePanelButton = document.getElementById("close-panel-button");
+const inventoryGrid = document.querySelector(".inventory-grid");
+const inventoryItem = inventoryGrid.querySelectorAll(".item");
+const inventoryItems = [...inventoryItem].map(el => el);
+const plots = document
+  .getElementById("plot-container")
+  .querySelectorAll(".plot");
+const plotBodyContainer = document.querySelector(".plot-container-body");
+const addToInventoryButtons = document.querySelectorAll(
+  ".add-to-inventory-button"
+);
+const plantLength = inventoryGrid.querySelectorAll(".item").length;
+const plotPagination = document.querySelector(".plot-pagination");
+const paginationButtons = document.querySelectorAll(".plot-item");
+const addNewPlotButtons = document.querySelectorAll(".add-plot-button");
+const plotHeightInput = document.querySelector('#height-input');
+const plotWidthInput = document.querySelector('#width-input');
+
+function toggleSidePanel() {
+  if (
+    sidePanel.style.transform === "translate(500px)" ||
+    sidePanel.style.transform === ""
+  ) {
+    sidePanel.style.transform = "translate(0px)";
+    sidePanel.style.boxShadow = "0 19px 38px rgba(0, 0, 0, 0.3)";
+    sidePanelButton.style.transform = "translate(0px)";
+    sidePanelContainer.style.zIndex = "4";
+  } else {
+    sidePanel.style.transform = "translate(500px)";
+    sidePanel.style.boxShadow = "none";
+    sidePanelButton.style.transform = "translate(500px)";
+    sidePanelContainer.style.zIndex = "";
+  }
+}
+
+function closeSidePanel() {
+  sidePanel.style.transform = "translate(500px)";
+  sidePanel.style.boxShadow = "none";
+  sidePanelButton.style.transform = "translate(500px)";
+}
+
+
+//Change height of plot with height input
+function changePlotHeight() {
+  var value = jQuery(this).val();
+  // Each inch is equal to 12 pixels
+  var convertedValue = value * 12;
+  jQuery(".rectangle-plot").height(convertedValue);
+  jQuery(".gridlines").remove();
+  editGrid(12);
+}
+
+//Change width of plot with width input
+function changePlotWidth() {
+  var value = jQuery(this).val();
+  // Each inch is equal to 12 pixels
+  var convertedValue = value * 12;
+  jQuery(".rectangle-plot").width(convertedValue);
+  jQuery(".gridlines").remove();
+  editGrid(12);
+}
+
+function addPlantsToInventory() {
+  // Find the id of the list-item parent of the number input
+  const inventoryItemID = this.closest(".list-item").id;
+  const thisNumberInput = document.querySelector(
+    "#" + inventoryItemID + "-input-number"
+  );
+  let thisNumberInputValue = document.querySelector(
+    "#" + inventoryItemID + "-input-number"
+  ).value;
+  const thisTotalPlants = document.querySelector(
+    "#" + inventoryItemID + "-inventory-total"
+  );
+  for (let i = 0; i < thisNumberInputValue; i++) {
+    // Create a new item with inventoryItemID
+    const newItem = document.createElement("div");
+    newItem.className = "item " + inventoryItemID;
+    inventoryGrid.appendChild(newItem);
+    inventoryItems.push(newItem);
+  }
+  // Reset the input value back to 0 - TODO why is both thisNumberInputValue and thisNumberInput.value required?
+  thisNumberInput.value = "0";
+  thisNumberInputValue = 0;
+  // Rerun draggable on items
+  jQuery(".item").draggable(draggableOptions);
+}
+
+// Select the node that will be observed for mutations
+const targetNode = document.getElementById('inventory-grid-container');
+
+// Options for the observer (which mutations to observe)
+const config = {childList: true};
+
+// Callback function to execute when mutations are observed
+const callback = function(mutationsList, observer) {
+    // Use traditional 'for loops' for IE 11
+    for(let mutation of mutationsList) {
+        if (mutation.type === 'childList' && mutation.removedNodes) {
+          for (let removedNode of mutation.removedNodes){
+            if (removedNode.classList.contains('item')) {
+              const plantID = removedNode.getAttribute('class').split(' ')[1];
+              console.log(removedNode.classList);
+              console.log('A ' + plantID + ' node has been removed.');
+              return;
+            }
+          }
+        }
+        if (mutation.type === 'childList' && mutation.addedNodes) {
+          mutation.addedNodes.forEach((addedNode) => {
+            if (addedNode.classList.contains('item')) {
+              const plantID = addedNode.getAttribute('class').split(' ')[1];
+              console.log('A ' + plantID + ' node has been added.');
+              return;
+            }
+          });
+        }
+    }
+};
+
+// Create an observer instance linked to the callback function
+const observer = new MutationObserver(callback);
+
+// Start observing the target node for configured mutations
+observer.observe(targetNode, config);
+
+function addNewPlot(e) {
+  // Find the value of the plot button
+  const targetID = e.target.value;
+  const newPlot = document.createElement("div");
+  const newPlotGrid = document.createElement("div");
+  newPlot.className = "plot " + targetID + "-plot";
+  newPlotGrid.className = "grid plot-grid h-100 w-100";
+  newPlot.appendChild(newPlotGrid);
+  console.log(newPlotGrid);
+  plotBodyContainer.appendChild(newPlot);
+  jQuery(".plot").draggable(draggablePlotOptions);
+  jQuery(".plot-grid").droppable(droppableOptions);
+  // Add gridlines to plot grid div with jQuery
+  function createGrid(size) {
+    var i,
+      sel = jQuery(newPlotGrid),
+      height = sel.height(),
+      width = sel.width(),
+      ratioW = Math.floor(width / size),
+      ratioH = Math.floor(height / size);
+
+    for (i = 0; i <= ratioW; i++) {
+      // vertical grid lines
+      jQuery("<div />")
+        .css({
+          top: 0,
+          left: i * size,
+          width: 1,
+          height: height,
+        })
+        .addClass("gridlines gridlines-vertical")
+        .appendTo(sel);
+    }
+
+    for (i = 0; i <= ratioH; i++) {
+      // horizontal grid lines
+      jQuery("<div />")
+        .css({
+          top: i * size,
+          left: 0,
+          width: width,
+          height: 1,
+        })
+        .addClass("gridlines gridlines-horizontal")
+        .appendTo(sel);
+    }
+
+    jQuery(".gridlines").show();
+  }
+  createGrid(12);
+}
+
+function editGrid(size) {
+  var i,
+    sel = jQuery('.plot-grid'),
+    height = sel.height(),
+    width = sel.width(),
+    ratioW = Math.floor(width / size),
+    ratioH = Math.floor(height / size);
+
+  for (i = 0; i <= ratioW; i++) {
+    // vertical grid lines
+    jQuery("<div />")
+      .css({
+        top: 0,
+        left: i * size,
+        width: 1,
+        height: height,
+      })
+      .addClass("gridlines gridlines-vertical")
+      .appendTo(sel);
+  }
+
+  for (i = 0; i <= ratioH; i++) {
+    // horizontal grid lines
+    jQuery("<div />")
+      .css({
+        top: i * size,
+        left: 0,
+        width: width,
+        height: 1,
+      })
+      .addClass("gridlines gridlines-horizontal")
+      .appendTo(sel);
+  }
+
+  jQuery(".gridlines").show();
+}
+
+function focusPlots() {
+  for (var i = 0, len = plots.length; i < len; i++) {
+    plots[i].setAttribute("tabindex", "0");
+  }
+}
+
+sidePanelButton.addEventListener("click", toggleSidePanel);
+closePanelButton.addEventListener("click", closeSidePanel);
+plotHeightInput.addEventListener("input", changePlotHeight);
+plotWidthInput.addEventListener("input", changePlotWidth);
+
+paginationButtons.forEach((paginationButton) =>
+  paginationButton.addEventListener("click", focusPlots)
+);
+
+addNewPlotButtons.forEach((addNewPlotButton) =>
+  addNewPlotButton.addEventListener("click", addNewPlot)
+);
+
+addToInventoryButtons.forEach((addToInventoryButton) =>
+  addToInventoryButton.addEventListener("click", addPlantsToInventory)
+);

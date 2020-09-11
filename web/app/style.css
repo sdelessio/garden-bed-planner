@@ -1,0 +1,411 @@
+html,
+body {
+  height: 100%;
+  font-family: "Nunito", sans-serif;
+  color: #101a0f;
+  background-color: #acbc8a;
+
+}
+
+#garden-bed-planner {
+  /* font-size: 22px; */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+}
+
+/* Add a plot modal */
+
+.modal-content {
+  background-color: #f4f8ef;
+}
+
+.modal-body > button {
+  flex-grow: 1;
+  margin: 5px;
+}
+
+#add-plot-modal > .modal-dialog > .modal-content > .modal-body > button {
+  height: 200px;
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #fff;
+  border: none;
+  box-shadow: 0 1px 3px rgba(34, 13, 30, 0.12), 0 1px 2px rgba(34, 13, 30, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.plot-pagination > .plot-item{
+  background-color: #fff;
+  height: 55px;
+  width: 55px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: 0 1px 3px rgba(34, 13, 30, 0.12), 0 1px 2px rgba(34, 13, 30, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  margin: 2px;
+}
+
+.rectangle {
+  background-image: url("https://www.clipartmax.com/png/middle/118-1180008_red-square-clip-art-f9ylxu-clipart-square-red.png");
+}
+
+.triangle {
+  background-image: url("https://upload.wikimedia.org/wikipedia/en/thumb/3/39/Red_triangle_with_thick_white_border.svg/1200px-Red_triangle_with_thick_white_border.svg.png");
+}
+
+.circle {
+  background-image: url("https://www.sticker.com/picture_library/product_images/colored-stickers/fluorescent-pink-paper-circle-stickers.png");
+}
+
+/* Side panel */
+
+.side-panel {
+  height: 100%;
+  width: 500px;
+  top: 0;
+  transform: translate(500px);
+  overflow-x: hidden;
+  background-color: #f4f8ef;
+  transition: 0.5s;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.side-panel-container {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  right: 0;
+  height: 100%;
+  top: 0;
+}
+
+#search-bar {
+  height: 75px;
+  font-family: FontAwesome, "Nunito", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+}
+
+/* #search-bar-container > .input-group-append > span {
+  width: 75px;
+  border-radius: 0px;
+  background-color: #ec572c;
+  border: none;
+} */
+
+.list-group {
+  padding: 0px 15px;
+}
+
+.list-item {
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 10px;
+  box-shadow: 0 1px 3px rgba(34, 13, 30, 0.12), 0 1px 2px rgba(34, 13, 30, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  margin-bottom: 10px;
+}
+
+.list-item > .row {
+  align-items: center;
+}
+
+.btn-number {
+  border-radius: 0px;
+}
+
+.minus-button {
+  background-color: #ec572c;
+  color: #f4f8ef;
+}
+
+.plus-button {
+  color: #f4f8ef;
+  background-color: #acbc8a;
+}
+
+.plus-minus-input {
+  /* border: 1px solid #ced4da;
+  border-radius: 4px; */
+  max-width: 6em;
+}
+
+.plus-minus-input > .form-control {
+  /* border-top: none;
+  border-bottom: none; */
+  font-family: FontAwesome, "Nunito", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+}
+
+.add-to-inventory-button {
+
+}
+
+/* Plots */
+
+.circle-plot {
+  height: 500px;
+  width: 500px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.plot {
+  -webkit-box-shadow: 20px 1px 0px -1px rgba(35, 13, 31, 0.3);
+  -moz-box-shadow: 20px 1px 0px -1px rgba(35, 13, 31, 0.3);
+  box-shadow: 20px 1px 0px -1px rgba(35, 13, 31, 0.3);
+  background-color: rgba(34, 13, 30, 0.65);
+  border: 30px ridge #ec572c;
+  /* padding: 10px; */
+}
+.rectangle-plot {
+  /* default 60in by 60 in */
+  height: 720px;
+  width: 720px;
+}
+
+/*
+.triangular-plot {
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 100px solid red;
+} */
+
+/* Plot size inputs */
+
+.input-group-text {
+  background-color: #acbc8a;
+  color: #f4f8ef;
+}
+
+.placeholder {
+  border: 1px solid black;
+  height: 100px;
+  width: 100px;
+}
+
+.delete-area {
+  height: 10vh;
+  width:  10vh;
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  transition: .1s ease-in;
+}
+
+.dropArea {
+  display: flex;
+  background: rgba(225, 51, 51, 0.8);
+  bottom: 15px;
+}
+
+
+.delete-area > i::before {
+  color: #fff;
+  font-size: 5vh;
+  opacity: 0;
+  transition: .2s ease-in;
+}
+
+.dropArea > i::before {
+  opacity: 1;
+}
+
+
+.dropAreaHover {   background: rgba(225, 51, 51, 1); }
+
+/* Grids */
+
+.inventory-grid-wrapper {
+  /* overflow-y: scroll; */
+}
+
+.grid {
+  position: relative;
+}
+
+.inventory-grid > .item {
+  position: absolute;
+}
+
+.plot-grid > .item {
+  position: absolute;
+}
+
+.gridlines {
+  display: none;
+  position: absolute;
+  background-color: rgba(244, 248, 239, 0.5);
+}
+
+/* Grid items */
+
+.item {
+  margin: 5px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(34, 13, 30, 0.12), 0 1px 2px rgba(34, 13, 30, 0.24);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  touch-action: none;
+  user-select: none;
+  z-index: 3;
+  cursor: move;
+}
+
+.plot-item {
+  cursor: move !important;
+}
+
+/* 12 pixels is equal to one inch */
+
+.heirloom-tomato {
+  /* grid-column: auto / span 2;
+  grid-row: auto / span 2; */
+  background-image: url("static/tomato.jpeg");
+  width: 72px !important;
+  height: 72px !important;
+}
+
+.pepper {
+  /* grid-column: auto / span 1;
+  grid-row: auto / span 1; */
+  background-image: url("static/pepper.jpeg");
+  width: 72px !important;
+  height: 72px !important;
+}
+
+.spinach {
+  /* grid-column: auto / span 3;
+  grid-row: auto / span 3; */
+  background-image: url("static/spinach.jpg");
+  width: 72px !important;
+  height: 72px !important;
+}
+
+/* Plot and inventory containers */
+
+#plot-container,
+#inventory-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+#inventory-container {
+  width: 100%;
+  background-color: #f4f8ef;
+}
+
+#plot-container {
+  background-color: #acbc8a;
+}
+
+.plot-container-body {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.plot-container-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  background-color: rgba(245, 249, 240, 0.5);
+  justify-content: space-between;
+}
+
+.input-group-container {
+  display: flex;
+  flex-direction: row;
+}
+
+
+.plot-container-header > .input-group-container > .input-group {
+  margin: 5px;
+  max-width: 200px;
+}
+
+.inventory-grid:empty:before {
+   content: 'You have nothing in your inventory. Click search button to add plants';
+}
+
+.plot-container-body:empty:before {
+  content: 'No plots added. Click " + " button to add a plot';
+}
+
+/* Toggle modals and sidebar buttons */
+
+#add-plot-button {
+  background-color: #ec572c;
+  border-radius: 5px;
+  color: #f4f8ef;
+}
+
+#toggle-search-drawer-button {
+  position: relative;
+  transform: translate(500px);
+  height: 80px;
+  align-self: center;
+  background-color: #ec572c;
+  color: #f4f8ef;
+  z-index: 1000;
+  transition: 0.5s;
+  width: 40px;
+  border-bottom-left-radius: 80px;
+  border-top-left-radius: 80px;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3);
+  font-size: 1.5em;
+}
+
+.btn-primary{
+  background-color: #ec572c;
+  border-color: #ec572c;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+  background-color: #c94622;
+  border-color: #c94622;
+}
+
+.column-empty-text {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.mobile-only {
+  display: none;
+}
+
+@media (max-width: 576px) {
+  .mobile-only {
+    display: block;
+  }
+}
