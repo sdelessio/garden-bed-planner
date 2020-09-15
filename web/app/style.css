@@ -170,8 +170,11 @@ h6 {
   box-shadow: 20px 1px 0px -1px rgba(35, 13, 31, 0.3);
   background-color: rgba(34, 13, 30, 0.65);
   border: 30px ridge #ec572c;
+  margin: 10px;
+  cursor: pointer;
   /* padding: 10px; */
 }
+
 .rectangle-plot {
   /* default 60in by 60 in */
   height: 720px;
@@ -271,7 +274,15 @@ h6 {
   touch-action: none;
   user-select: none;
   z-index: 3;
-  cursor: move;
+  cursor: grab;
+}
+
+.plot:active, .item:active{
+  cursor: grabbing;
+}
+
+.plot:active{
+  z-index:2000;
 }
 
 .plot-item {
@@ -305,6 +316,10 @@ h6 {
 }
 
 /* Plot and inventory containers */
+
+.plot.active {
+  outline: 4px solid yellow;
+}
 
 #plot-container,
 #inventory-container {
