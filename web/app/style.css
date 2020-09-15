@@ -4,7 +4,7 @@ body {
   font-family: "Nunito", sans-serif;
   color: #101a0f;
   background-color: #acbc8a;
-
+  overflow: hidden;
 }
 
 #garden-bed-planner {
@@ -172,6 +172,7 @@ h6 {
   border: 30px ridge #ec572c;
   margin: 10px;
   cursor: pointer;
+  z-index: 0;
   /* padding: 10px; */
 }
 
@@ -238,10 +239,6 @@ h6 {
 .dropAreaHover {   background: rgba(225, 51, 51, 1); }
 
 /* Grids */
-
-.inventory-grid-wrapper {
-  /* overflow-y: scroll; */
-}
 
 .grid {
   position: relative;
@@ -321,13 +318,14 @@ h6 {
   outline: 4px solid yellow;
 }
 
+
 #plots-container,
 #inventory-container {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-flow: column;
-  min-height: 100vh;
+  /* min-height: 100vh; */
 }
 
 #inventory-container {
@@ -337,15 +335,18 @@ h6 {
 
 #plots-container {
   background-color: #acbc8a;
+  height: 100%;
 }
 
 #plots-container-body {
   display: flex;
   flex: 1;
   width: 100%;
+  display: block;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  overflow: scroll;
 }
 
 #plots-container-header {
@@ -355,6 +356,10 @@ h6 {
   padding: 5px;
   background-color: rgba(245, 249, 240, 0.5);
   justify-content: space-between;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  z-index: 3000;
 }
 
 #input-groups-container {
@@ -373,7 +378,7 @@ h6 {
 }
 
 #plots-container-body:empty:before {
-  content: 'No plots added. Click " + " button to add a plot';
+  content: 'No plots added. Click " Add new plot + " button to add a plot';
 }
 
 /* Toggle modals and sidebar buttons */
@@ -417,6 +422,29 @@ h6 {
 
 .mobile-only {
   display: none;
+}
+
+/* scrollbar */
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f4f8ef;
+  box-shadow: inset 0 0 5px grey;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 @media (max-width: 576px) {

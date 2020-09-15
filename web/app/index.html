@@ -31,9 +31,9 @@
 
   <body>
     <div class="container-fluid" id="garden-bed-planner">
-      <div class="row">
+      <div class="row vh-100">
         <div class="col-sm-8 p-0 h-100">
-          <div class="h-100" id="plots-container">
+          <div id="plots-container">
             <header id="plots-container-header">
               <div id="input-groups-container">
                 <div class="input-group">
@@ -79,17 +79,15 @@
                 Add new plot <i class="fa fa-plus"></i>
               </button>
             </header>
-            <div id="plots-container-body"></div>
+            <div class="h-100" id="plots-container-body"></div>
           </div>
         </div>
-        <div class="col-sm-4 p-0 w-100">
+        <div class="col-sm-4 p-0 w-100" id="inventory-container-wrapper">
           <div class="h-100" id="inventory-container">
-            <div class="inventory-grid-wrapper h-100 w-100">
               <div
                 class="inventory-grid h-100 w-100"
-                id="inventory-grid-container"
+                id="inventory-grid"
               ></div>
-            </div>
           </div>
         </div>
         <div class="delete-area"><i class="fa fa-trash"></i></div>

@@ -95,7 +95,7 @@ function addPlantsToInventory() {
 }
 
 // Select the node that will be observed for mutations
-const targetNode = document.getElementById("inventory-grid-container");
+const targetNode = document.getElementById("inventory-grid");
 
 // Options for the observer (which mutations to observe)
 const config = { childList: true };
