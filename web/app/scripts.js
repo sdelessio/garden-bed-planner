@@ -233,7 +233,15 @@ jQuery(document).on("click", ".plot", function (e) {
     current[0].className = current[0].className.replace(" active", "");
     this.className += " active";
   }
+// Populate inputs with active class values
+// let activeClassHeight = this.height();
+let activeClassHeight = (jQuery(this).height()) / 12;
+plotHeightInput.value = activeClassHeight;
+let activeClassWidth = (jQuery(this).width()) / 12;
+plotWidthInput.value = activeClassWidth;
 });
+
+
 
 sidePanelButton.addEventListener("click", toggleSidePanel);
 closePanelButton.addEventListener("click", closeSidePanel);
