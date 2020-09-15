@@ -321,7 +321,7 @@ h6 {
   outline: 4px solid yellow;
 }
 
-#plot-container,
+#plots-container,
 #inventory-container {
   display: flex;
   justify-content: flex-start;
@@ -335,11 +335,11 @@ h6 {
   background-color: #f4f8ef;
 }
 
-#plot-container {
+#plots-container {
   background-color: #acbc8a;
 }
 
-.plot-container-body {
+#plots-container-body {
   display: flex;
   flex: 1;
   width: 100%;
@@ -348,7 +348,7 @@ h6 {
   flex-direction: column;
 }
 
-.plot-container-header {
+#plots-container-header {
   width: 100%;
   display: flex;
   align-items: center;
@@ -357,13 +357,13 @@ h6 {
   justify-content: space-between;
 }
 
-.input-group-container {
+#input-groups-container {
   display: flex;
   flex-direction: row;
 }
 
 
-.plot-container-header > .input-group-container > .input-group {
+#plots-container-header > #input-groups-container > .input-group {
   margin: 5px;
   max-width: 200px;
 }
@@ -372,7 +372,7 @@ h6 {
    content: 'You have nothing in your inventory. Click search button to add plants';
 }
 
-.plot-container-body:empty:before {
+#plots-container-body:empty:before {
   content: 'No plots added. Click " + " button to add a plot';
 }
 

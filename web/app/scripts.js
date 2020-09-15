@@ -11,7 +11,7 @@ const closePanelButton = document.getElementById("close-panel-button");
 const inventoryGrid = document.querySelector(".inventory-grid");
 const inventoryItems = inventoryGrid.querySelectorAll(".item");
 const inventoryItemsMap = [...inventoryItems].map((el) => el);
-const plotBodyContainer = document.querySelector(".plot-container-body");
+const plotsContainerBody = document.getElementById("plots-container-body");
 const plots = document.querySelectorAll(".plot");
 const plotsMap = [...plots].map((el) => el);
 
@@ -139,7 +139,7 @@ function addNewPlot(e) {
   newPlot.className = "plot " + targetID + "-plot";
   newPlotGrid.className = "grid plot-grid h-100 w-100";
   newPlot.appendChild(newPlotGrid);
-  plotBodyContainer.appendChild(newPlot);
+  plotsContainerBody.appendChild(newPlot);
   plotsMap.push(newPlot);
   jQuery(".plot").draggable(draggablePlotOptions);
   jQuery(".plot-grid").droppable(droppableOptions);

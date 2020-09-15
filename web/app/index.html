@@ -31,40 +31,44 @@
 
   <body>
     <div class="container-fluid" id="garden-bed-planner">
-      <div class="row h-100">
+      <div class="row">
         <div class="col-sm-8 p-0 h-100">
-          <div class="h-100" id="plot-container">
-            <header class="plot-container-header">
-                <div class="input-group-container">
-              <div class="input-group">
-                <input
-                  min="0"
-                  type="number"
-                  class="form-control"
-                  id="width-input"
-                  placeholder="Width"
-                  aria-label="Width"
-                  aria-describedby="width-addon"
-                />
-                <div class="input-group-append">
-                  <span class="input-group-text" id="width-addon">inches</span>
+          <div class="h-100" id="plots-container">
+            <header id="plots-container-header">
+              <div id="input-groups-container">
+                <div class="input-group">
+                  <input
+                    min="0"
+                    type="number"
+                    class="form-control"
+                    id="width-input"
+                    placeholder="Width"
+                    aria-label="Width"
+                    aria-describedby="width-addon"
+                  />
+                  <div class="input-group-append">
+                    <span class="input-group-text" id="width-addon"
+                      >inches</span
+                    >
+                  </div>
+                </div>
+                <div class="input-group">
+                  <input
+                    min="0"
+                    type="number"
+                    class="form-control"
+                    id="height-input"
+                    placeholder="Height"
+                    aria-label="Height"
+                    aria-describedby="height-addon"
+                  />
+                  <div class="input-group-append">
+                    <span class="input-group-text" id="height-addon"
+                      >inches</span
+                    >
+                  </div>
                 </div>
               </div>
-              <div class="input-group">
-                <input
-                  min="0"
-                  type="number"
-                  class="form-control"
-                  id="height-input"
-                  placeholder="Height"
-                  aria-label="Height"
-                  aria-describedby="height-addon"
-                />
-                <div class="input-group-append">
-                  <span class="input-group-text" id="height-addon">inches</span>
-                </div>
-              </div>
-            </div>
               <button
                 type="button"
                 class="btn"
@@ -75,8 +79,8 @@
                 Add new plot <i class="fa fa-plus"></i>
               </button>
             </header>
-            <div class="plot-container-body"></div>
-        </div>
+            <div id="plots-container-body"></div>
+          </div>
         </div>
         <div class="col-sm-4 p-0 w-100">
           <div class="h-100" id="inventory-container">
@@ -84,10 +88,7 @@
               <div
                 class="inventory-grid h-100 w-100"
                 id="inventory-grid-container"
-              >
-                <!-- <inventory-list-plant v-for="plant in plantList" :class="plant.id + ' item'"/> -->
-                <!-- <div class="pepper item" id="pepper"></div> -->
-              </div>
+              ></div>
             </div>
           </div>
         </div>
@@ -119,7 +120,12 @@
               />
             </div>
             <div class="list-group">
-              <div class="list-item" :key="plant.key" :id="plant.id" v-for="plant in filteredList">
+              <div
+                class="list-item"
+                :key="plant.key"
+                :id="plant.id"
+                v-for="plant in filteredList"
+              >
                 <div class="row">
                   <div class="col-md-5 col-lg-3 col-xl-3">
                     <img
@@ -134,8 +140,8 @@
                       <p><b>Space required: </b>{{plant.space}}</p>
                     </div>
                     <div style="display: flex; justify-content: flex-start;">
-                    <div class="input-group plus-minus-input">
-                      <!-- <span class="input-group-btn">
+                      <div class="input-group plus-minus-input">
+                        <!-- <span class="input-group-btn">
                         <button
                           class="btn btn-default btn-number minus-button"
                           :id="plant.id + '-minus-button'"
@@ -144,7 +150,7 @@
                           <span class="fa fa-minus"></span>
                         </button>
                       </span> -->
-                      <!-- <span
+                        <!-- <span
                         type="number"
                         class="form-control input-number"
                         :id="plant.id + '-input-number'"
@@ -153,9 +159,14 @@
                       >
                         0
                       </span> -->
-                      <input type="number" class="form-control input-number" :id="plant.id + '-input-number'"
-                      min="0" value="0">
-                      <!-- <span
+                        <input
+                          type="number"
+                          class="form-control input-number"
+                          :id="plant.id + '-input-number'"
+                          min="0"
+                          value="0"
+                        />
+                        <!-- <span
                         type="number"
                         class="form-control input-number"
                         :id="plant.id + '-input-number'"
@@ -164,7 +175,7 @@
                       >
                         {{plant.quantity}}
                       </span> -->
-                      <!-- <span class="input-group-btn">
+                        <!-- <span class="input-group-btn">
                         <button
                           class="btn btn-default btn-number plus-button"
                           :id="plant.id + '-plus-button'"
@@ -173,12 +184,25 @@
                           <span class="fa fa-plus"></span>
                         </button>
                       </span> -->
+                      </div>
+                      <button
+                        class="btn btn-outline-success add-to-inventory-button"
+                        :id="plant.id + '-add-to-inventory-button'"
+                        style="margin-left: 5px;"
+                      >
+                        Add to inventory
+                      </button>
                     </div>
-                    <button class="btn btn-outline-success add-to-inventory-button" :id="plant.id + '-add-to-inventory-button'" style="margin-left: 5px;">Add to inventory</button>
-                  </div>
-                  <div style="display:flex; justify-content: flex-end;">
-                    <p style="margin-bottom: 0; margin-top: 10px;"><b>Total in inventory:</b> <span class="inventory-total" :id="plant.id + '-inventory-total'">0</span></p>
-                  </div>
+                    <div style="display: flex; justify-content: flex-end;">
+                      <p style="margin-bottom: 0; margin-top: 10px;">
+                        <b>Total in inventory:</b>
+                        <span
+                          class="inventory-total"
+                          :id="plant.id + '-inventory-total'"
+                          >0</span
+                        >
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -217,11 +241,16 @@
           </div>
           <div class="modal-body d-flex justify-content-between">
             <button class="circle add-plot-button" value="circle"></button>
-            <button class="rectangle add-plot-button" value="rectangle"></button>
+            <button
+              class="rectangle add-plot-button"
+              value="rectangle"
+            ></button>
             <button class="triangle add-plot-button" value="triangle"></button>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Okay</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">
+              Okay
+            </button>
           </div>
         </div>
       </div>
