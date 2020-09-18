@@ -173,6 +173,7 @@ h6 {
   margin: 10px;
   cursor: pointer;
   z-index: 0;
+  position: relative;
   /* padding: 10px; */
 }
 
@@ -245,11 +246,12 @@ h6 {
 }
 
 .inventory-grid > .item {
-  position: absolute;
+  /* position: absolute; */
 }
 
+
 .plot-grid > .item {
-  position: absolute;
+  position: relative;
 }
 
 .gridlines {
@@ -280,6 +282,11 @@ h6 {
 
 .plot:active{
   z-index:2000;
+}
+
+.item:active{
+  position: absolute;
+  z-index: 2000;
 }
 
 .plot-item {
@@ -346,7 +353,7 @@ h6 {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  overflow: scroll;
+  /* overflow: scroll; */
 }
 
 #plots-container-header {

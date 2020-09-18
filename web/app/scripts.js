@@ -1,7 +1,7 @@
 import {
   draggableOptions,
   draggablePlotOptions,
-  droppableOptions,
+  plotDroppableOptions,
 } from "./draggable.js";
 
 const sidePanelButton = document.getElementById("toggle-search-drawer-button");
@@ -142,7 +142,7 @@ function addNewPlot(e) {
   plotsContainerBody.appendChild(newPlot);
   plotsMap.push(newPlot);
   jQuery(".plot").draggable(draggablePlotOptions);
-  jQuery(".plot-grid").droppable(droppableOptions);
+  jQuery(".plot-grid").droppable(plotDroppableOptions);
   // Add gridlines to plot grid div with jQuery
   function createGrid(size) {
     var i,
@@ -233,6 +233,8 @@ jQuery(document).on("click", ".plot", function (e) {
     current[0].className = current[0].className.replace(" active", "");
     this.className += " active";
   }
+
+
 // Populate inputs with active class values
 // let activeClassHeight = this.height();
 let activeClassHeight = (jQuery(this).height()) / 12;
@@ -241,6 +243,25 @@ let activeClassWidth = (jQuery(this).width()) / 12;
 plotWidthInput.value = activeClassWidth;
 });
 
+// Bring items to front of page when dragged
+jQuery(document).on("dragstart", ".item", function(e){
+    console.log("hello");
+});
+
+jQuery(document).on("drag", ".item", function(e){
+    console.log("hi");
+
+});
+
+jQuery(document).on("dragstop", ".item", function(e){
+    console.log("hey");
+    if (e.target.parentElement.classList.contains("plot-grid")) {
+      e.target.style.position = "absolute"
+    }
+    if (e.target.parentElement.classList.contains("inventory-grid")) {
+      e.target.style.position = "relative"
+    }
+});
 
 
 sidePanelButton.addEventListener("click", toggleSidePanel);
