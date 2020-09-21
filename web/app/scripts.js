@@ -4,8 +4,7 @@ import {
   plotDroppableOptions,
 } from "./draggable.js";
 
-const sidePanelButton = document.getElementById("toggle-search-drawer-button");
-const sidePanel = document.getElementById("my-side-panel");
+const sidePanelButton = document.getElementById("search-for-plants-button");
 const sidePanelContainer = document.getElementById("side-panel-container");
 const closePanelButton = document.getElementById("close-panel-button");
 const inventoryGrid = document.querySelector(".inventory-grid");
@@ -27,25 +26,21 @@ const plotWidthInput = document.querySelector("#width-input");
 
 function toggleSidePanel() {
   if (
-    sidePanel.style.transform === "translate(500px)" ||
-    sidePanel.style.transform === ""
+    sidePanelContainer.style.transform === "translate(500px)" ||
+    sidePanelContainer.style.transform === ""
   ) {
-    sidePanel.style.transform = "translate(0px)";
-    sidePanel.style.boxShadow = "0 19px 38px rgba(0, 0, 0, 0.3)";
-    sidePanelButton.style.transform = "translate(0px)";
-    sidePanelContainer.style.zIndex = "4";
+    sidePanelContainer.style.transform = "translate(0px)";
+    sidePanelContainer.style.boxShadow = "0 19px 38px rgba(0, 0, 0, 0.3)";
+    sidePanelContainer.style.zIndex = "4000000";
   } else {
-    sidePanel.style.transform = "translate(500px)";
-    sidePanel.style.boxShadow = "none";
-    sidePanelButton.style.transform = "translate(500px)";
-    sidePanelContainer.style.zIndex = "";
+    sidePanelContainer.style.transform = "translate(500px)";
+    sidePanelContainer.style.boxShadow = "none";
   }
 }
 
 function closeSidePanel() {
-  sidePanel.style.transform = "translate(500px)";
-  sidePanel.style.boxShadow = "none";
-  sidePanelButton.style.transform = "translate(500px)";
+  sidePanelContainer.style.transform = "translate(500px)";
+  sidePanelContainer.style.boxShadow = "none";
 }
 
 //Change height of plot with height input
@@ -56,6 +51,7 @@ function changePlotHeight() {
   jQuery(".plot.active").height(convertedValue);
   jQuery(".plot.active > .plot-grid > .gridlines").remove();
   editGrid(12);
+
 }
 
 //Change width of plot with width input

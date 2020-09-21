@@ -4,39 +4,12 @@ var draggableOptions = {
   opacity: 0.5,
   snap: ".gridlines",
   revert: "invalid",
+  scroll: true
 };
 var draggablePlotOptions = {
   opacity: 0.5,
-  revert: "invalid",
-  cancel: false,
-  autoscroll: 1,
+  revert: "invalid"
 };
-// var droppableOptions = {
-//   accept: ".item",
-//   tolerance: "touch",
-//   drop: function(event, ui) {
-//     var dropped = ui.draggable;
-//     var droppedOn = jq(this);
-//     var item = dropped.detach();
-//     var offset = droppedOn.offset();
-// var inventoryContainerLeftOffset = jq('#inventory-grid').offset().left;
-// var inventoryContainerTopOffset = jq('#inventory-grid').offset().top;
-//     if (jq(this).hasClass('plot-grid')){
-//       dropped.css('left', (ui.position.left + inventoryContainerLeftOffset - jq(this).offset().left) +'px');
-//       dropped.css('top', (ui.position.top + inventoryContainerTopOffset - jq(this).offset().top) +'px');
-//     }
-//     if (jq(this).hasClass('inventory-grid')){
-//       dropped.css('left', 0 +'px');
-//       dropped.css('top', 0 +'px');
-//     }
-//     var item = dropped.detach();
-//     droppedOn.append(item);
-//
-//     // var currentPos = item.position();
-//     // console.log(currentPos);
-//     // var parentPos = jq(this).offset();
-//     // console.log(parentPos);
-//   }
 var inventoryDroppableOptions = {
   accept: ".item",
   tolerance: "touch",
