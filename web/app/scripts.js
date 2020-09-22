@@ -13,7 +13,6 @@ const inventoryItemsMap = [...inventoryItems].map((el) => el);
 const plotsContainerBody = document.getElementById("plots-container-body");
 const plots = document.querySelectorAll(".plot");
 const plotsMap = [...plots].map((el) => el);
-
 const addToInventoryButtons = document.querySelectorAll(
   ".add-to-inventory-button"
 );
@@ -23,6 +22,27 @@ const paginationButtons = document.querySelectorAll(".plot-item");
 const addNewPlotButtons = document.querySelectorAll(".add-plot-button");
 const plotHeightInput = document.querySelector("#height-input");
 const plotWidthInput = document.querySelector("#width-input");
+
+
+// // just grab a DOM element
+// var element = plotsContainerBody;
+//
+// // And pass it to panzoom
+// panzoom(element, {
+//   maxZoom: 1,
+//   minZoom: 0.1,
+//   beforeMouseDown: function(e) {
+//     // allow mouse-down panning only if altKey is down. Otherwise - ignore
+//     var shouldIgnore = !e.altKey;
+//     return shouldIgnore;
+//   },
+//   beforeWheel: function(e) {
+//   // allow wheel-zoom only if altKey is down. Otherwise - ignore
+//   var shouldIgnore = !e.altKey;
+//   return shouldIgnore;
+// },
+// // console.log(panzoom.getTransform()); // prints {scale: 1.2, x: 10, y: 10}
+// });
 
 function toggleSidePanel() {
   if (

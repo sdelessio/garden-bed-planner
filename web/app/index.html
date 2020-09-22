@@ -31,11 +31,18 @@
 
   <body>
     <div class="container-fluid" id="garden-bed-planner">
+      <div class="row">
+        <header id="app-header" class="w-100">
+          <h1>Garden bed calculator</h1>
+          <p>Some instructions</p>
+        </header>
+      </div>
       <div class="row vh-100">
         <div class="col-sm-8 p-0 h-100">
           <div id="plots-container">
             <header id="plots-container-header">
-              <h2>Plots</h2>
+              <h2>Your plots</h2>
+              <div id="edit-plots-inputs">
               <div id="input-groups-container">
                 <div class="input-group">
                   <input
@@ -69,6 +76,7 @@
                     >
                   </div>
                 </div>
+              </div>
               <button
                 type="button"
                 class="btn"
@@ -76,20 +84,20 @@
                 data-toggle="modal"
                 data-target="#add-plot-modal"
               >
-                <i class="fa fa-plus"></i>
+                New plot <i class="fa fa-plus"></i>
               </button>
                 </div>
             </header>
             <div class="h-100" id="plots-container-body"></div>
           </div>
         </div>
-        <div class="col-sm-4 p-0 w-100" id="inventory-container-wrapper">
+        <div class="col-sm-4 p-0 h-100" id="inventory-container-wrapper">
           <div id="inventory-container">
-            <header id="inventory-container-header"><h2>Inventory</h2><button   type="button"
+            <header id="inventory-container-header"><h2>Your inventory</h2><button   type="button"
               class="btn"
-              id="search-for-plants-button"><i class="fa fa-search"></i></button></header>
+              id="search-for-plants-button">Find plants <i class="fa fa-search"></i></button></header>
               <div
-                class="inventory-grid w-100"
+                class="inventory-grid h-100"
                 id="inventory-grid"
               ></div>
           </div>
@@ -266,6 +274,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src='https://unpkg.com/panzoom@9.2.4/dist/panzoom.min.js'></script>
     <script src="./PlantList.js"></script>
     <script src="./scripts.js"></script>
   </body>
